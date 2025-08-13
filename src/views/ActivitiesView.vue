@@ -24,7 +24,7 @@
       <div class="container mx-auto px-4">
         <div class="max-w-3xl mx-auto text-center">
           <p class="text-lg text-gray-700 leading-relaxed">
-            Chez FlexBeat, nous proposons une gamme complète d'activités sportives 
+            Chez FlexBeat, nous proposons une gamme complète d'activités sportives et culturelles 
             conçues pour répondre aux besoins de chacun. Que vous soyez débutant 
             ou sportif confirmé, nous avons le programme qu'il vous faut !
           </p>
@@ -120,47 +120,6 @@
       </div>
     </section>
 
-    <!-- Planning Hebdomadaire -->
-    <section class="py-20 bg-white">
-      <div class="container mx-auto px-4">
-        <div class="text-center mb-16">
-          <h2 class="section-title">Planning Hebdomadaire</h2>
-          <p class="section-subtitle">
-            Consultez nos horaires pour organiser votre semaine sportive
-          </p>
-        </div>
-        
-        <div class="max-w-4xl mx-auto">
-          <div class="grid grid-cols-1 md:grid-cols-7 gap-4">
-            <div 
-              v-for="day in weeklySchedule" 
-              :key="day.name"
-              class="text-center"
-            >
-              <div class="bg-cacao text-white py-3 rounded-t-lg font-semibold">
-                {{ day.name }}
-              </div>
-              <div class="bg-gray-50 p-4 rounded-b-lg min-h-32">
-                <div v-if="day.activities.length === 0" class="text-gray-400 text-sm">
-                  Repos
-                </div>
-                <div v-else class="space-y-2">
-                  <div 
-                    v-for="activity in day.activities" 
-                    :key="activity.name"
-                    class="text-xs p-2 rounded bg-white shadow-sm"
-                  >
-                    <p class="font-semibold text-cacao">{{ activity.name }}</p>
-                    <p class="text-gray-500">{{ activity.time }}</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <!-- Informations Pratiques -->
     <section class="py-20 bg-gradient-to-r from-cacao to-indigo text-white">
       <div class="container mx-auto px-4">
@@ -174,7 +133,9 @@
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
           <div class="text-center">
             <div class="w-16 h-16 mx-auto mb-4 bg-white/20 rounded-full flex items-center justify-center">
-              <span class="text-2xl">👕</span>
+              <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+              </svg>
             </div>
             <h3 class="text-lg font-semibold mb-2">Équipement</h3>
             <p class="text-white/80 text-sm">
@@ -185,7 +146,9 @@
           
           <div class="text-center">
             <div class="w-16 h-16 mx-auto mb-4 bg-white/20 rounded-full flex items-center justify-center">
-              <span class="text-2xl">💧</span>
+              <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+              </svg>
             </div>
             <h3 class="text-lg font-semibold mb-2">Hydratation</h3>
             <p class="text-white/80 text-sm">
@@ -196,7 +159,9 @@
           
           <div class="text-center">
             <div class="w-16 h-16 mx-auto mb-4 bg-white/20 rounded-full flex items-center justify-center">
-              <span class="text-2xl">⏰</span>
+              <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
             </div>
             <h3 class="text-lg font-semibold mb-2">Ponctualité</h3>
             <p class="text-white/80 text-sm">
@@ -249,17 +214,17 @@ const getBadgeClass = (color) => {
 
 const getActivityAdvantages = (activityName) => {
   const advantages = {
-    'Fitness': [
+    'Fitness & Musculation': [
       'Amélioration de la force musculaire',
       'Augmentation de l\'endurance cardiovasculaire',
       'Tonification du corps',
       'Adapté à tous les niveaux'
     ],
-    'Danse': [
-      'Développement de la coordination',
-      'Amélioration de la souplesse',
-      'Expression artistique',
-      'Découverte de la culture africaine'
+    'Club de Slam & Lecture': [
+      'Développement de l\'expression orale',
+      'Enrichissement culturel',
+      'Stimulation de la créativité',
+      'Partage et échange en groupe'
     ],
     'Cardio Plein Air': [
       'Connexion avec la nature',
@@ -270,47 +235,4 @@ const getActivityAdvantages = (activityName) => {
   }
   return advantages[activityName] || []
 }
-
-const weeklySchedule = computed(() => [
-  {
-    name: 'Lundi',
-    activities: [
-      { name: 'Fitness', time: '18h00-19h30' }
-    ]
-  },
-  {
-    name: 'Mardi',
-    activities: [
-      { name: 'Danse', time: '17h00-18h30' }
-    ]
-  },
-  {
-    name: 'Mercredi',
-    activities: [
-      { name: 'Fitness', time: '18h00-19h30' }
-    ]
-  },
-  {
-    name: 'Jeudi',
-    activities: [
-      { name: 'Danse', time: '17h00-18h30' }
-    ]
-  },
-  {
-    name: 'Vendredi',
-    activities: [
-      { name: 'Fitness', time: '18h00-19h30' }
-    ]
-  },
-  {
-    name: 'Samedi',
-    activities: [
-      { name: 'Cardio Plein Air', time: '7h00-8h30' }
-    ]
-  },
-  {
-    name: 'Dimanche',
-    activities: []
-  }
-])
 </script> 

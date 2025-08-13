@@ -34,7 +34,7 @@
           <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div class="space-y-6">
               <p class="text-lg text-gray-700 leading-relaxed">
-                Fondée en 2023, FlexBeat est le fruit d'une collaboration entre deux passionnés 
+                Fondée en août 2025, FlexBeat est le fruit d'une collaboration entre deux passionnés 
                 du sport et de l'éducation physique. Notre association est née du constat que 
                 l'activité physique régulière était essentielle au bien-être de tous, 
                 quel que soit l'âge ou le niveau.
@@ -48,9 +48,14 @@
             </div>
             
             <div class="relative">
-              <div class="w-full h-80 bg-gradient-to-br from-cacao to-indigo rounded-2xl flex items-center justify-center">
-                <div class="text-center text-white">
-                  <div class="text-6xl mb-4">🏃‍♂️</div>
+              <div class="w-full h-80 rounded-2xl overflow-hidden shadow-2xl">
+                <img 
+                  src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&h=600&fit=crop" 
+                  alt="Deux amis faisant du sport ensemble" 
+                  class="w-full h-full object-cover"
+                />
+                <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                <div class="absolute bottom-4 left-4 text-white">
                   <p class="text-xl font-semibold">Le mouvement, c'est notre musique</p>
                 </div>
               </div>

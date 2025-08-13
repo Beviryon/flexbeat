@@ -5,8 +5,8 @@
         <!-- Logo -->
         <router-link to="/" class="flex items-center space-x-3 group">
           <!-- Logo FlexBeat -->
-          <div class="w-20 h-20 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-            <img src="/logo.jpg" alt="FlexBeat Logo" class="w-full h-full object-cover rounded-full" />
+          <div class="w-16 h-16 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+            <img src="/logo.jpg" alt="FlexBeat Logo" class="w-full h-full object-contain" />
           </div>
           <div class="flex flex-col">
             <span class="text-2xl font-bold">
