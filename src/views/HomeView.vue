@@ -26,7 +26,7 @@
           <div class="flex flex-col sm:flex-row gap-4 justify-center">
             <router-link 
               to="/join"
-              class="bg-white text-cacao hover:bg-gray-100 font-bold py-3 px- rounded-2xl transition-all duration-300 text-base"
+              class="bg-white text-cacao hover:bg-gray-100 font-bold py-3 px-6 rounded-2xl transition-all duration-300 text-base"
             >
               Rejoindre FlexBeat
             </router-link>
