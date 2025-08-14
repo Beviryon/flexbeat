@@ -64,10 +64,16 @@
                   <div class="absolute inset-0 bg-gradient-to-br from-cacao to-indigo rounded-2xl transform rotate-3 group-hover:rotate-6 transition-transform duration-500"></div>
                   <div class="relative bg-white rounded-2xl p-4 transform -rotate-3 group-hover:-rotate-6 transition-transform duration-500">
                     <svg class="w-full h-full" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <!-- Detailed Fitness Icon -->
                       <path d="M12 2L13.09 8.26L20 9L13.09 9.74L12 16L10.91 9.74L4 9L10.91 8.26L12 2Z" fill="#5D3A00"/>
-                      <circle cx="12" cy="12" r="3" stroke="#5D3A00" stroke-width="2"/>
-                      <path d="M12 5V19" stroke="#5D3A00" stroke-width="2" stroke-linecap="round"/>
-                      <path d="M5 12H19" stroke="#5D3A00" stroke-width="2" stroke-linecap="round"/>
+                      <path d="M12 6L13.5 10.5L18 11L14.5 14.5L15.5 19L12 16.5L8.5 19L9.5 14.5L6 11L10.5 10.5L12 6Z" fill="#2C2D5B"/>
+                      <circle cx="12" cy="12" r="2" fill="#FFDD00"/>
+                      <path d="M7 7l3 3" stroke="#FFDD00" stroke-width="2" stroke-linecap="round"/>
+                      <path d="M17 7l-3 3" stroke="#FFDD00" stroke-width="2" stroke-linecap="round"/>
+                      <path d="M7 17l3-3" stroke="#FFDD00" stroke-width="2" stroke-linecap="round"/>
+                      <path d="M17 17l-3-3" stroke="#FFDD00" stroke-width="2" stroke-linecap="round"/>
+                      <path d="M12 5V19" stroke="#FF3B6A" stroke-width="1.5" stroke-linecap="round"/>
+                      <path d="M5 12H19" stroke="#FF3B6A" stroke-width="1.5" stroke-linecap="round"/>
                     </svg>
                   </div>
                 </div>
@@ -106,11 +112,17 @@
                   <div class="absolute inset-0 bg-gradient-to-br from-raspberry to-sunny rounded-2xl transform -rotate-3 group-hover:-rotate-6 transition-transform duration-500"></div>
                   <div class="relative bg-white rounded-2xl p-4 transform rotate-3 group-hover:rotate-6 transition-transform duration-500">
                     <svg class="w-full h-full" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <circle cx="12" cy="12" r="10" stroke="#FF3B6A" stroke-width="2"/>
-                      <path d="M8 14C8 14 9.5 16 12 16C14.5 16 16 14 16 14" stroke="#FF3B6A" stroke-width="2" stroke-linecap="round"/>
-                      <path d="M9 9H9.01" stroke="#FF3B6A" stroke-width="2" stroke-linecap="round"/>
-                      <path d="M15 9H15.01" stroke="#FF3B6A" stroke-width="2" stroke-linecap="round"/>
+                      <!-- Detailed Community Icon -->
+                      <circle cx="12" cy="8" r="4" fill="#FF3B6A"/>
+                      <circle cx="6" cy="16" r="3" fill="#FFDD00"/>
+                      <circle cx="18" cy="16" r="3" fill="#FF3B6A"/>
+                      <path d="M12 12c-2.21 0-4 1.79-4 4" stroke="#FF3B6A" stroke-width="2" stroke-linecap="round"/>
+                      <path d="M12 12c2.21 0 4 1.79 4 4" stroke="#FFDD00" stroke-width="2" stroke-linecap="round"/>
+                      <path d="M8 16c0-2.21 1.79-4 4-4s4 1.79 4 4" stroke="#FF3B6A" stroke-width="2" stroke-linecap="round"/>
+                      <path d="M12 20c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z" fill="#FFDD00"/>
                       <path d="M12 20C16.4183 20 20 16.4183 20 12C20 7.58172 16.4183 4 12 4C7.58172 4 4 7.58172 4 12C4 16.4183 7.58172 20 12 20Z" stroke="#FFDD00" stroke-width="1" stroke-dasharray="2 2"/>
+                      <path d="M12 8v4" stroke="#FF3B6A" stroke-width="1.5" stroke-linecap="round"/>
+                      <path d="M10 10h4" stroke="#FF3B6A" stroke-width="1.5" stroke-linecap="round"/>
                     </svg>
                   </div>
                 </div>
@@ -145,9 +157,19 @@
                   <div class="absolute inset-0 bg-gradient-to-br from-sunny to-cacao rounded-2xl transform rotate-3 group-hover:rotate-6 transition-transform duration-500"></div>
                   <div class="relative bg-white rounded-2xl p-4 transform -rotate-3 group-hover:-rotate-6 transition-transform duration-500">
                     <svg class="w-full h-full" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M12 2L15.09 8.26L22 9L16.91 13.74L18.18 20.02L12 16.77L5.82 20.02L7.09 13.74L2 9L8.91 8.26L12 2Z" fill="#FFDD00"/>
-                      <path d="M12 6L13.5 10.5L18 11L14.5 14.5L15.5 19L12 16.5L8.5 19L9.5 14.5L6 11L10.5 10.5L12 6Z" fill="#5D3A00"/>
-                      <circle cx="12" cy="12" r="2" fill="#FFDD00"/>
+                      <!-- Detailed Progress Icon -->
+                      <path d="M3 21h18" stroke="#5D3A00" stroke-width="2" stroke-linecap="round"/>
+                      <path d="M3 7h18" stroke="#5D3A00" stroke-width="2" stroke-linecap="round"/>
+                      <path d="M3 14h18" stroke="#5D3A00" stroke-width="2" stroke-linecap="round"/>
+                      <path d="M7 3v18" stroke="#FFDD00" stroke-width="2" stroke-linecap="round"/>
+                      <path d="M12 3v18" stroke="#FFDD00" stroke-width="2" stroke-linecap="round"/>
+                      <path d="M17 3v18" stroke="#FFDD00" stroke-width="2" stroke-linecap="round"/>
+                      <circle cx="7" cy="7" r="2" fill="#FFDD00"/>
+                      <circle cx="12" cy="14" r="2" fill="#5D3A00"/>
+                      <circle cx="17" cy="21" r="2" fill="#FFDD00"/>
+                      <path d="M7 7L12 14L17 21" stroke="#5D3A00" stroke-width="2" stroke-linecap="round"/>
+                      <path d="M7 7L12 14L17 21" stroke="#FF3B6A" stroke-width="1" stroke-linecap="round" stroke-dasharray="2 2"/>
+                      <path d="M3 3L21 21" stroke="#FFDD00" stroke-width="1" stroke-linecap="round" stroke-dasharray="1 1"/>
                     </svg>
                   </div>
                 </div>
@@ -176,9 +198,21 @@
                   <div class="absolute inset-0 bg-gradient-to-br from-indigo to-raspberry rounded-2xl transform -rotate-3 group-hover:-rotate-6 transition-transform duration-500"></div>
                   <div class="relative bg-white rounded-2xl p-4 transform rotate-3 group-hover:rotate-6 transition-transform duration-500">
                     <svg class="w-full h-full" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M12 2L13.09 8.26L20 9L13.09 9.74L12 16L10.91 9.74L4 9L10.91 8.26L12 2Z" fill="#2C2D5B"/>
-                      <path d="M12 5L13.5 9.5L18 10L14.5 13.5L15.5 18L12 15.5L8.5 18L9.5 13.5L6 10L10.5 9.5L12 5Z" fill="#FF3B6A"/>
-                      <circle cx="12" cy="12" r="2" fill="#2C2D5B"/>
+                      <!-- Detailed Events Icon -->
+                      <rect x="3" y="4" width="18" height="18" rx="2" ry="2" fill="#2C2D5B"/>
+                      <path d="M16 2v4" stroke="#FF3B6A" stroke-width="2" stroke-linecap="round"/>
+                      <path d="M8 2v4" stroke="#FF3B6A" stroke-width="2" stroke-linecap="round"/>
+                      <path d="M3 10h18" stroke="#FF3B6A" stroke-width="2" stroke-linecap="round"/>
+                      <circle cx="8" cy="14" r="1" fill="#FFDD00"/>
+                      <circle cx="12" cy="14" r="1" fill="#FFDD00"/>
+                      <circle cx="16" cy="14" r="1" fill="#FFDD00"/>
+                      <circle cx="8" cy="18" r="1" fill="#FFDD00"/>
+                      <circle cx="12" cy="18" r="1" fill="#FFDD00"/>
+                      <circle cx="16" cy="18" r="1" fill="#FFDD00"/>
+                      <path d="M12 6h.01" stroke="#FF3B6A" stroke-width="2" stroke-linecap="round"/>
+                      <path d="M16 6h.01" stroke="#FF3B6A" stroke-width="2" stroke-linecap="round"/>
+                      <path d="M12 2L13.09 8.26L20 9L13.09 9.74L12 16L10.91 9.74L4 9L10.91 8.26L12 2Z" fill="#FFDD00" opacity="0.3"/>
+                      <path d="M12 6L13.5 10.5L18 11L14.5 14.5L15.5 19L12 16.5L8.5 19L9.5 14.5L6 11L10.5 10.5L12 6Z" fill="#FF3B6A" opacity="0.3"/>
                     </svg>
                   </div>
                 </div>
@@ -207,10 +241,17 @@
                   <div class="absolute inset-0 bg-gradient-to-br from-cacao to-sunny rounded-2xl transform rotate-3 group-hover:rotate-6 transition-transform duration-500"></div>
                   <div class="relative bg-white rounded-2xl p-4 transform -rotate-3 group-hover:-rotate-6 transition-transform duration-500">
                     <svg class="w-full h-full" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <circle cx="12" cy="12" r="10" fill="#5D3A00"/>
-                      <path d="M12 6V18" stroke="#FFDD00" stroke-width="2" stroke-linecap="round"/>
-                      <path d="M6 12H18" stroke="#FFDD00" stroke-width="2" stroke-linecap="round"/>
-                      <path d="M12 2L13.09 8.26L20 9L13.09 9.74L12 16L10.91 9.74L4 9L10.91 8.26L12 2Z" fill="#FFDD00"/>
+                      <!-- Detailed Pricing Icon -->
+                      <path d="M12 2L13.09 8.26L20 9L13.09 9.74L12 16L10.91 9.74L4 9L10.91 8.26L12 2Z" fill="#5D3A00"/>
+                      <path d="M12 6L13.5 10.5L18 11L14.5 14.5L15.5 19L12 16.5L8.5 19L9.5 14.5L6 11L10.5 10.5L12 6Z" fill="#FFDD00"/>
+                      <circle cx="12" cy="12" r="2" fill="#5D3A00"/>
+                      <path d="M8 8l8 8" stroke="#FF3B6A" stroke-width="2" stroke-linecap="round"/>
+                      <path d="M16 8l-8 8" stroke="#FF3B6A" stroke-width="2" stroke-linecap="round"/>
+                      <path d="M6 6l2 2" stroke="#FF3B6A" stroke-width="1" stroke-linecap="round"/>
+                      <path d="M18 18l-2-2" stroke="#FF3B6A" stroke-width="1" stroke-linecap="round"/>
+                      <path d="M12 2L13.09 8.26L20 9L13.09 9.74L12 16L10.91 9.74L4 9L10.91 8.26L12 2Z" fill="#FF3B6A" opacity="0.2"/>
+                      <path d="M12 6L13.5 10.5L18 11L14.5 14.5L15.5 19L12 16.5L8.5 19L9.5 14.5L6 11L10.5 10.5L12 6Z" fill="#FFDD00" opacity="0.2"/>
+                      <circle cx="12" cy="12" r="3" stroke="#FF3B6A" stroke-width="1" fill="none" opacity="0.3"/>
                     </svg>
                   </div>
                 </div>
@@ -239,10 +280,20 @@
                   <div class="absolute inset-0 bg-gradient-to-br from-raspberry to-indigo rounded-2xl transform -rotate-3 group-hover:-rotate-6 transition-transform duration-500"></div>
                   <div class="relative bg-white rounded-2xl p-4 transform rotate-3 group-hover:rotate-6 transition-transform duration-500">
                     <svg class="w-full h-full" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M12 2L15.09 8.26L22 9L16.91 13.74L18.18 20.02L12 16.77L5.82 20.02L7.09 13.74L2 9L8.91 8.26L12 2Z" fill="#FF3B6A"/>
+                      <!-- Detailed Rewards Icon -->
+                      <path d="M12 2L13.09 8.26L20 9L13.09 9.74L12 16L10.91 9.74L4 9L10.91 8.26L12 2Z" fill="#FF3B6A"/>
                       <path d="M12 6L13.5 10.5L18 11L14.5 14.5L15.5 19L12 16.5L8.5 19L9.5 14.5L6 11L10.5 10.5L12 6Z" fill="#2C2D5B"/>
-                      <circle cx="12" cy="12" r="2" fill="#FF3B6A"/>
-                      <path d="M12 18L13.09 24.26L20 25L13.09 25.74L12 32L10.91 25.74L4 25L10.91 24.26L12 18Z" fill="#FFDD00"/>
+                      <circle cx="12" cy="12" r="2" fill="#FFDD00"/>
+                      <path d="M8 20h8" stroke="#FF3B6A" stroke-width="2" stroke-linecap="round"/>
+                      <path d="M10 20v-2" stroke="#FF3B6A" stroke-width="2" stroke-linecap="round"/>
+                      <path d="M14 20v-2" stroke="#FF3B6A" stroke-width="2" stroke-linecap="round"/>
+                      <path d="M6 22h12" stroke="#2C2D5B" stroke-width="2" stroke-linecap="round"/>
+                      <path d="M9 22v-1" stroke="#2C2D5B" stroke-width="2" stroke-linecap="round"/>
+                      <path d="M15 22v-1" stroke="#2C2D5B" stroke-width="2" stroke-linecap="round"/>
+                      <path d="M12 2L13.09 8.26L20 9L13.09 9.74L12 16L10.91 9.74L4 9L10.91 8.26L12 2Z" fill="#FFDD00" opacity="0.2"/>
+                      <path d="M12 6L13.5 10.5L18 11L14.5 14.5L15.5 19L12 16.5L8.5 19L9.5 14.5L6 11L10.5 10.5L12 6Z" fill="#FF3B6A" opacity="0.2"/>
+                      <circle cx="12" cy="12" r="3" stroke="#FFDD00" stroke-width="1" fill="none" opacity="0.3"/>
+                      <path d="M12 18L13.09 24.26L20 25L13.09 25.74L12 32L10.91 25.74L4 25L10.91 24.26L12 18Z" fill="#FFDD00" opacity="0.3"/>
                     </svg>
                   </div>
                 </div>
@@ -288,130 +339,6 @@
       </div>
     </section>
 
-    <!-- Tarifs -->
-    <section class="py-20 bg-white">
-      <div class="container mx-auto px-4">
-        <div class="text-center mb-16">
-          <h2 class="section-title">Nos Tarifs</h2>
-          <p class="section-subtitle">
-            Des tarifs accessibles pour tous les budgets
-          </p>
-        </div>
-        
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-          <div class="card p-8 text-center border-2 border-gray-200">
-            <h3 class="text-2xl font-bold text-cacao mb-4">Mensuel</h3>
-            <div class="text-4xl font-bold text-raspberry mb-6">
-              15 000 FCFA
-              <span class="text-lg text-gray-500 font-normal">/mois</span>
-            </div>
-            <ul class="space-y-3 mb-8 text-left">
-              <li class="flex items-center space-x-2">
-                <svg class="w-5 h-5 text-sunny flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                </svg>
-                <span class="text-gray-600">Accès à toutes les activités</span>
-              </li>
-              <li class="flex items-center space-x-2">
-                <svg class="w-5 h-5 text-sunny flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                </svg>
-                <span class="text-gray-600">Équipement fourni</span>
-              </li>
-              <li class="flex items-center space-x-2">
-                <svg class="w-5 h-5 text-sunny flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                </svg>
-                <span class="text-gray-600">Support communautaire</span>
-              </li>
-            </ul>
-            <button @click="scrollToForm" class="btn-primary w-full">
-              Choisir ce plan
-            </button>
-          </div>
-          
-          <div class="card p-8 text-center border-2 border-cacao relative">
-            <div class="absolute -top-4 left-1/2 transform -translate-x-1/2">
-              <span class="bg-cacao text-white px-4 py-2 rounded-full text-sm font-semibold">
-                Recommandé
-              </span>
-            </div>
-            <h3 class="text-2xl font-bold text-cacao mb-4">Annuel</h3>
-            <div class="text-4xl font-bold text-raspberry mb-6">
-              150 000 FCFA
-              <span class="text-lg text-gray-500 font-normal">/an</span>
-            </div>
-            <div class="text-sm text-sunny font-semibold mb-4">
-              Économisez 30 000 FCFA !
-            </div>
-            <ul class="space-y-3 mb-8 text-left">
-              <li class="flex items-center space-x-2">
-                <svg class="w-5 h-5 text-sunny flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                </svg>
-                <span class="text-gray-600">Tous les avantages du plan mensuel</span>
-              </li>
-              <li class="flex items-center space-x-2">
-                <svg class="w-5 h-5 text-sunny flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                </svg>
-                <span class="text-gray-600">T-shirt FlexBeat offert</span>
-              </li>
-              <li class="flex items-center space-x-2">
-                <svg class="w-5 h-5 text-sunny flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                </svg>
-                <span class="text-gray-600">Paiement en 3 fois possible</span>
-              </li>
-              <li class="flex items-center space-x-2">
-                <svg class="w-5 h-5 text-sunny flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                </svg>
-                <span class="text-gray-600">Priorité aux événements</span>
-              </li>
-            </ul>
-            <button @click="scrollToForm" class="btn-primary w-full">
-              Choisir ce plan
-            </button>
-          </div>
-          
-          <div class="card p-8 text-center border-2 border-gray-200">
-            <h3 class="text-2xl font-bold text-cacao mb-4">Étudiant</h3>
-            <div class="text-4xl font-bold text-raspberry mb-6">
-              10 000 FCFA
-              <span class="text-lg text-gray-500 font-normal">/mois</span>
-            </div>
-            <div class="text-sm text-sunny font-semibold mb-4">
-              -33% sur le tarif normal
-            </div>
-            <ul class="space-y-3 mb-8 text-left">
-              <li class="flex items-center space-x-2">
-                <svg class="w-5 h-5 text-sunny flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                </svg>
-                <span class="text-gray-600">Mêmes avantages que le plan mensuel</span>
-              </li>
-              <li class="flex items-center space-x-2">
-                <svg class="w-5 h-5 text-sunny flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                </svg>
-                <span class="text-gray-600">Carte d'étudiant requise</span>
-              </li>
-              <li class="flex items-center space-x-2">
-                <svg class="w-5 h-5 text-sunny flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                </svg>
-                <span class="text-gray-600">Validité limitée à 1 an</span>
-              </li>
-            </ul>
-            <button @click="scrollToForm" class="btn-primary w-full">
-              Choisir ce plan
-            </button>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <!-- Règlement intérieur -->
     <section class="py-20 bg-gradient-to-r from-indigo to-cacao text-white">
       <div class="container mx-auto px-4 text-center">
@@ -423,16 +350,15 @@
           de l'adhésion et du fonctionnement de l'association
         </p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <a 
-            href="/documents/reglement-interieur.pdf" 
-            target="_blank"
+          <router-link 
+            to="/legal"
             class="bg-white/20 hover:bg-white/30 text-white font-semibold py-4 px-8 rounded-lg transition-all duration-300 backdrop-blur-sm flex items-center justify-center space-x-2"
           >
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
             </svg>
-            <span>Télécharger le règlement</span>
-          </a>
+            <span>Consulter le règlement</span>
+          </router-link>
           <button 
             @click="scrollToForm"
             class="btn-accent text-lg px-8 py-4"
@@ -632,8 +558,8 @@
                 class="w-4 h-4 text-cacao focus:ring-cacao rounded mt-1"
               >
               <label for="conditions" class="text-sm text-gray-600">
-                J'accepte les <a href="/documents/reglement-interieur.pdf" target="_blank" class="text-cacao hover:underline">conditions générales</a> 
-                et le <a href="/documents/reglement-interieur.pdf" target="_blank" class="text-cacao hover:underline">règlement intérieur</a> de FlexBeat *
+                J'accepte les <router-link to="/legal" class="text-cacao hover:underline">conditions générales</router-link> 
+                et le <router-link to="/legal" class="text-cacao hover:underline">règlement intérieur</router-link> de FlexBeat *
               </label>
             </div>
             

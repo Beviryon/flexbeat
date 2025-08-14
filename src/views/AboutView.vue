@@ -100,7 +100,7 @@
                 <div class="flex-1">
                   <div class="flex items-center space-x-3 mb-3">
                     <h3 class="text-2xl font-bold text-cacao">Beviryon ISSANGE NGOULOU</h3>
-                    <span class="px-3 py-1 bg-cacao/10 text-cacao text-sm font-semibold rounded-full">Directeur</span>
+                    <span class="px-3 py-1 bg-cacao/10 text-cacao text-sm font-semibold rounded-full">V.Précident</span>
                   </div>
                   <p class="text-raspberry font-semibold mb-4 text-lg">Co-fondateur & Développeur Full Stack</p>
                   <p class="text-gray-600 leading-relaxed text-base">
