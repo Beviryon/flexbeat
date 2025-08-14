@@ -32,74 +32,257 @@
     </section>
 
     <!-- Avantages de l'adhésion -->
-    <section class="py-20 bg-gray-50">
-      <div class="container mx-auto px-4">
-        <div class="text-center mb-16">
+    <section class="py-20 bg-gradient-to-br from-gray-50 via-white to-gray-50 relative overflow-hidden">
+      <!-- Background Elements -->
+      <div class="absolute inset-0">
+        <div class="absolute top-20 right-20 w-72 h-72 bg-cacao/5 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-20 left-20 w-96 h-96 bg-raspberry/5 rounded-full blur-3xl"></div>
+        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-sunny/5 rounded-full blur-2xl"></div>
+      </div>
+      
+      <div class="container mx-auto px-4 relative z-10">
+        <div class="text-center mb-20">
+          <div class="inline-flex items-center space-x-2 bg-cacao/10 text-cacao px-4 py-2 rounded-full mb-6">
+            <span class="w-2 h-2 bg-cacao rounded-full"></span>
+            <span class="text-sm font-semibold">Avantages FlexBeat</span>
+          </div>
           <h2 class="section-title">Pourquoi rejoindre FlexBeat ?</h2>
-          <p class="section-subtitle">
-            Découvrez tous les avantages de faire partie de notre association
+          <p class="section-subtitle max-w-3xl mx-auto">
+            Découvrez tous les avantages de faire partie de notre association 
+            et transformez votre vie avec nous
           </p>
         </div>
         
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          <div class="card text-center p-8">
-            <div class="w-20 h-20 mx-auto mb-6 bg-cacao rounded-full flex items-center justify-center">
-              <span class="text-3xl text-white">💪</span>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+          <!-- Activités variées -->
+          <div class="group relative">
+            <div class="absolute inset-0 bg-gradient-to-br from-cacao/10 to-indigo/10 rounded-3xl blur-xl group-hover:blur-2xl transition-all duration-500"></div>
+            <div class="relative bg-white/90 backdrop-blur-sm border border-white/30 rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-3">
+              <div class="text-center">
+                <!-- SVG Icon -->
+                <div class="w-24 h-24 mx-auto mb-6 relative">
+                  <div class="absolute inset-0 bg-gradient-to-br from-cacao to-indigo rounded-2xl transform rotate-3 group-hover:rotate-6 transition-transform duration-500"></div>
+                  <div class="relative bg-white rounded-2xl p-4 transform -rotate-3 group-hover:-rotate-6 transition-transform duration-500">
+                    <svg class="w-full h-full" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M12 2L13.09 8.26L20 9L13.09 9.74L12 16L10.91 9.74L4 9L10.91 8.26L12 2Z" fill="#5D3A00"/>
+                      <circle cx="12" cy="12" r="3" stroke="#5D3A00" stroke-width="2"/>
+                      <path d="M12 5V19" stroke="#5D3A00" stroke-width="2" stroke-linecap="round"/>
+                      <path d="M5 12H19" stroke="#5D3A00" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                  </div>
+                </div>
+                
+                <h3 class="text-2xl font-bold text-cacao mb-4 group-hover:text-indigo transition-colors duration-300">Activités Variées</h3>
+                <p class="text-gray-600 leading-relaxed mb-6">
+                  Accès à tous nos cours : fitness, slam & lecture, cardio plein air et plus encore
+                </p>
+                
+                <!-- Feature List -->
+                <div class="space-y-2 text-left">
+                  <div class="flex items-center space-x-2">
+                    <div class="w-2 h-2 bg-cacao rounded-full"></div>
+                    <span class="text-sm text-gray-600">Fitness & Musculation</span>
+                  </div>
+                  <div class="flex items-center space-x-2">
+                    <div class="w-2 h-2 bg-indigo rounded-full"></div>
+                    <span class="text-sm text-gray-600">Club de Slam & Lecture</span>
+                  </div>
+                  <div class="flex items-center space-x-2">
+                    <div class="w-2 h-2 bg-sunny rounded-full"></div>
+                    <span class="text-sm text-gray-600">Cardio Plein Air</span>
+                  </div>
+                </div>
+              </div>
             </div>
-            <h3 class="text-xl font-bold text-cacao mb-4">Activités variées</h3>
-            <p class="text-gray-600">
-              Accès à tous nos cours : fitness, danse, cardio plein air et plus encore
-            </p>
           </div>
           
-          <div class="card text-center p-8">
-            <div class="w-20 h-20 mx-auto mb-6 bg-raspberry rounded-full flex items-center justify-center">
-              <span class="text-3xl text-white">👥</span>
+          <!-- Communauté bienveillante -->
+          <div class="group relative">
+            <div class="absolute inset-0 bg-gradient-to-br from-raspberry/10 to-sunny/10 rounded-3xl blur-xl group-hover:blur-2xl transition-all duration-500"></div>
+            <div class="relative bg-white/90 backdrop-blur-sm border border-white/30 rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-3">
+              <div class="text-center">
+                <!-- SVG Icon -->
+                <div class="w-24 h-24 mx-auto mb-6 relative">
+                  <div class="absolute inset-0 bg-gradient-to-br from-raspberry to-sunny rounded-2xl transform -rotate-3 group-hover:-rotate-6 transition-transform duration-500"></div>
+                  <div class="relative bg-white rounded-2xl p-4 transform rotate-3 group-hover:rotate-6 transition-transform duration-500">
+                    <svg class="w-full h-full" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <circle cx="12" cy="12" r="10" stroke="#FF3B6A" stroke-width="2"/>
+                      <path d="M8 14C8 14 9.5 16 12 16C14.5 16 16 14 16 14" stroke="#FF3B6A" stroke-width="2" stroke-linecap="round"/>
+                      <path d="M9 9H9.01" stroke="#FF3B6A" stroke-width="2" stroke-linecap="round"/>
+                      <path d="M15 9H15.01" stroke="#FF3B6A" stroke-width="2" stroke-linecap="round"/>
+                      <path d="M12 20C16.4183 20 20 16.4183 20 12C20 7.58172 16.4183 4 12 4C7.58172 4 4 7.58172 4 12C4 16.4183 7.58172 20 12 20Z" stroke="#FFDD00" stroke-width="1" stroke-dasharray="2 2"/>
+                    </svg>
+                  </div>
+                </div>
+                
+                <h3 class="text-2xl font-bold text-cacao mb-4 group-hover:text-raspberry transition-colors duration-300">Communauté Bienveillante</h3>
+                <p class="text-gray-600 leading-relaxed mb-6">
+                  Rejoignez une communauté motivante et soutenante où chacun se sent valorisé
+                </p>
+                
+                <!-- Stats -->
+                <div class="flex justify-center space-x-4">
+                  <div class="text-center">
+                    <div class="text-2xl font-bold text-raspberry">100%</div>
+                    <div class="text-xs text-gray-500">Accueillant</div>
+                  </div>
+                  <div class="text-center">
+                    <div class="text-2xl font-bold text-sunny">24/7</div>
+                    <div class="text-xs text-gray-500">Support</div>
+                  </div>
+                </div>
+              </div>
             </div>
-            <h3 class="text-xl font-bold text-cacao mb-4">Communauté bienveillante</h3>
-            <p class="text-gray-600">
-              Rejoignez une communauté motivante et soutenante
-            </p>
           </div>
           
-          <div class="card text-center p-8">
-            <div class="w-20 h-20 mx-auto mb-6 bg-sunny rounded-full flex items-center justify-center">
-              <span class="text-3xl text-white">🎯</span>
+          <!-- Progression garantie -->
+          <div class="group relative">
+            <div class="absolute inset-0 bg-gradient-to-br from-sunny/10 to-cacao/10 rounded-3xl blur-xl group-hover:blur-2xl transition-all duration-500"></div>
+            <div class="relative bg-white/90 backdrop-blur-sm border border-white/30 rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-3">
+              <div class="text-center">
+                <!-- SVG Icon -->
+                <div class="w-24 h-24 mx-auto mb-6 relative">
+                  <div class="absolute inset-0 bg-gradient-to-br from-sunny to-cacao rounded-2xl transform rotate-3 group-hover:rotate-6 transition-transform duration-500"></div>
+                  <div class="relative bg-white rounded-2xl p-4 transform -rotate-3 group-hover:-rotate-6 transition-transform duration-500">
+                    <svg class="w-full h-full" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M12 2L15.09 8.26L22 9L16.91 13.74L18.18 20.02L12 16.77L5.82 20.02L7.09 13.74L2 9L8.91 8.26L12 2Z" fill="#FFDD00"/>
+                      <path d="M12 6L13.5 10.5L18 11L14.5 14.5L15.5 19L12 16.5L8.5 19L9.5 14.5L6 11L10.5 10.5L12 6Z" fill="#5D3A00"/>
+                      <circle cx="12" cy="12" r="2" fill="#FFDD00"/>
+                    </svg>
+                  </div>
+                </div>
+                
+                <h3 class="text-2xl font-bold text-cacao mb-4 group-hover:text-sunny transition-colors duration-300">Progression Garantie</h3>
+                <p class="text-gray-600 leading-relaxed mb-6">
+                  Programmes adaptés à tous les niveaux avec suivi personnalisé et objectifs clairs
+                </p>
+                
+                <!-- Progress Bar -->
+                <div class="w-full bg-gray-200 rounded-full h-2 mb-2">
+                  <div class="bg-gradient-to-r from-sunny to-cacao h-2 rounded-full transition-all duration-1000" style="width: 95%"></div>
+                </div>
+                <p class="text-xs text-gray-500">95% de réussite</p>
+              </div>
             </div>
-            <h3 class="text-xl font-bold text-cacao mb-4">Progression garantie</h3>
-            <p class="text-gray-600">
-              Programmes adaptés à tous les niveaux avec suivi personnalisé
-            </p>
           </div>
           
-          <div class="card text-center p-8">
-            <div class="w-20 h-20 mx-auto mb-6 bg-indigo rounded-full flex items-center justify-center">
-              <span class="text-3xl text-white">🎉</span>
+          <!-- Événements exclusifs -->
+          <div class="group relative">
+            <div class="absolute inset-0 bg-gradient-to-br from-indigo/10 to-raspberry/10 rounded-3xl blur-xl group-hover:blur-2xl transition-all duration-500"></div>
+            <div class="relative bg-white/90 backdrop-blur-sm border border-white/30 rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-3">
+              <div class="text-center">
+                <!-- SVG Icon -->
+                <div class="w-24 h-24 mx-auto mb-6 relative">
+                  <div class="absolute inset-0 bg-gradient-to-br from-indigo to-raspberry rounded-2xl transform -rotate-3 group-hover:-rotate-6 transition-transform duration-500"></div>
+                  <div class="relative bg-white rounded-2xl p-4 transform rotate-3 group-hover:rotate-6 transition-transform duration-500">
+                    <svg class="w-full h-full" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M12 2L13.09 8.26L20 9L13.09 9.74L12 16L10.91 9.74L4 9L10.91 8.26L12 2Z" fill="#2C2D5B"/>
+                      <path d="M12 5L13.5 9.5L18 10L14.5 13.5L15.5 18L12 15.5L8.5 18L9.5 13.5L6 10L10.5 9.5L12 5Z" fill="#FF3B6A"/>
+                      <circle cx="12" cy="12" r="2" fill="#2C2D5B"/>
+                    </svg>
+                  </div>
+                </div>
+                
+                <h3 class="text-2xl font-bold text-cacao mb-4 group-hover:text-indigo transition-colors duration-300">Événements Exclusifs</h3>
+                <p class="text-gray-600 leading-relaxed mb-6">
+                  Participation prioritaire à nos événements et compétitions avec accès VIP
+                </p>
+                
+                <!-- Event Count -->
+                <div class="text-center">
+                  <div class="text-3xl font-bold text-indigo mb-1">12+</div>
+                  <div class="text-sm text-gray-500">Événements par an</div>
+                </div>
+              </div>
             </div>
-            <h3 class="text-xl font-bold text-cacao mb-4">Événements exclusifs</h3>
-            <p class="text-gray-600">
-              Participation prioritaire à nos événements et compétitions
-            </p>
           </div>
           
-          <div class="card text-center p-8">
-            <div class="w-20 h-20 mx-auto mb-6 bg-cacao rounded-full flex items-center justify-center">
-              <span class="text-3xl text-white">💰</span>
+          <!-- Tarifs avantageux -->
+          <div class="group relative">
+            <div class="absolute inset-0 bg-gradient-to-br from-cacao/10 to-sunny/10 rounded-3xl blur-xl group-hover:blur-2xl transition-all duration-500"></div>
+            <div class="relative bg-white/90 backdrop-blur-sm border border-white/30 rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-3">
+              <div class="text-center">
+                <!-- SVG Icon -->
+                <div class="w-24 h-24 mx-auto mb-6 relative">
+                  <div class="absolute inset-0 bg-gradient-to-br from-cacao to-sunny rounded-2xl transform rotate-3 group-hover:rotate-6 transition-transform duration-500"></div>
+                  <div class="relative bg-white rounded-2xl p-4 transform -rotate-3 group-hover:-rotate-6 transition-transform duration-500">
+                    <svg class="w-full h-full" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <circle cx="12" cy="12" r="10" fill="#5D3A00"/>
+                      <path d="M12 6V18" stroke="#FFDD00" stroke-width="2" stroke-linecap="round"/>
+                      <path d="M6 12H18" stroke="#FFDD00" stroke-width="2" stroke-linecap="round"/>
+                      <path d="M12 2L13.09 8.26L20 9L13.09 9.74L12 16L10.91 9.74L4 9L10.91 8.26L12 2Z" fill="#FFDD00"/>
+                    </svg>
+                  </div>
+                </div>
+                
+                <h3 class="text-2xl font-bold text-cacao mb-4 group-hover:text-sunny transition-colors duration-300">Tarifs Avantageux</h3>
+                <p class="text-gray-600 leading-relaxed mb-6">
+                  Adhésion annuelle à prix réduit avec paiement échelonné possible
+                </p>
+                
+                <!-- Price Highlight -->
+                <div class="bg-gradient-to-r from-cacao/10 to-sunny/10 rounded-2xl p-4">
+                  <div class="text-2xl font-bold text-cacao">-30%</div>
+                  <div class="text-sm text-gray-600">Réduction annuelle</div>
+                </div>
+              </div>
             </div>
-            <h3 class="text-xl font-bold text-cacao mb-4">Tarifs avantageux</h3>
-            <p class="text-gray-600">
-              Adhésion annuelle à prix réduit avec paiement échelonné possible
-            </p>
           </div>
           
-          <div class="card text-center p-8">
-            <div class="w-20 h-20 mx-auto mb-6 bg-raspberry rounded-full flex items-center justify-center">
-              <span class="text-3xl text-white">🏆</span>
+          <!-- Récompenses -->
+          <div class="group relative">
+            <div class="absolute inset-0 bg-gradient-to-br from-raspberry/10 to-indigo/10 rounded-3xl blur-xl group-hover:blur-2xl transition-all duration-500"></div>
+            <div class="relative bg-white/90 backdrop-blur-sm border border-white/30 rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-3">
+              <div class="text-center">
+                <!-- SVG Icon -->
+                <div class="w-24 h-24 mx-auto mb-6 relative">
+                  <div class="absolute inset-0 bg-gradient-to-br from-raspberry to-indigo rounded-2xl transform -rotate-3 group-hover:-rotate-6 transition-transform duration-500"></div>
+                  <div class="relative bg-white rounded-2xl p-4 transform rotate-3 group-hover:rotate-6 transition-transform duration-500">
+                    <svg class="w-full h-full" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M12 2L15.09 8.26L22 9L16.91 13.74L18.18 20.02L12 16.77L5.82 20.02L7.09 13.74L2 9L8.91 8.26L12 2Z" fill="#FF3B6A"/>
+                      <path d="M12 6L13.5 10.5L18 11L14.5 14.5L15.5 19L12 16.5L8.5 19L9.5 14.5L6 11L10.5 10.5L12 6Z" fill="#2C2D5B"/>
+                      <circle cx="12" cy="12" r="2" fill="#FF3B6A"/>
+                      <path d="M12 18L13.09 24.26L20 25L13.09 25.74L12 32L10.91 25.74L4 25L10.91 24.26L12 18Z" fill="#FFDD00"/>
+                    </svg>
+                  </div>
+                </div>
+                
+                <h3 class="text-2xl font-bold text-cacao mb-4 group-hover:text-raspberry transition-colors duration-300">Récompenses</h3>
+                <p class="text-gray-600 leading-relaxed mb-6">
+                  Système de points et récompenses pour les membres actifs et motivés
+                </p>
+                
+                <!-- Rating -->
+                <div class="flex justify-center space-x-1">
+                  <div class="w-4 h-4 bg-sunny rounded-full"></div>
+                  <div class="w-4 h-4 bg-sunny rounded-full"></div>
+                  <div class="w-4 h-4 bg-sunny rounded-full"></div>
+                  <div class="w-4 h-4 bg-sunny rounded-full"></div>
+                  <div class="w-4 h-4 bg-sunny rounded-full"></div>
+                </div>
+                <p class="text-xs text-gray-500 mt-2">5/5 - Système Premium</p>
+              </div>
             </div>
-            <h3 class="text-xl font-bold text-cacao mb-4">Récompenses</h3>
-            <p class="text-gray-600">
-              Système de points et récompenses pour les membres actifs
+          </div>
+        </div>
+        
+        <!-- CTA Section -->
+        <div class="mt-20 text-center">
+          <div class="max-w-4xl mx-auto bg-gradient-to-r from-cacao/10 to-indigo/10 rounded-3xl p-8 border border-cacao/20">
+            <h3 class="text-2xl font-bold text-cacao mb-4">Prêt à nous rejoindre ?</h3>
+            <p class="text-lg text-gray-700 leading-relaxed mb-6">
+              "Rejoignez FlexBeat et transformez votre vie avec une communauté sportive 
+              exceptionnelle. Nos membres témoignent d'une amélioration significative 
+              de leur bien-être et de leur forme physique."
             </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+              <button class="btn-primary text-lg px-8 py-4">
+                Devenir membre maintenant
+              </button>
+              <button class="btn-secondary text-lg px-8 py-4">
+                Voir nos tarifs
+              </button>
+            </div>
           </div>
         </div>
       </div>

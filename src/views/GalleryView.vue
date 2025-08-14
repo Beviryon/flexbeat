@@ -16,26 +16,6 @@
           <p class="text-xl md:text-2xl text-white/90 leading-relaxed mb-8">
             Découvrez les moments forts de FlexBeat en images et en vidéos
           </p>
-          
-          <!-- Stats Hero -->
-          <div class="grid grid-cols-1 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
-            <div class="text-center">
-              <div class="text-3xl md:text-4xl font-bold mb-2">{{ gallery.length }}</div>
-              <div class="text-white/80">Photos & Vidéos</div>
-            </div>
-            <div class="text-center">
-              <div class="text-3xl md:text-4xl font-bold mb-2">4</div>
-              <div class="text-white/80">Catégories</div>
-            </div>
-            <div class="text-center">
-              <div class="text-3xl md:text-4xl font-bold mb-2">100%</div>
-              <div class="text-white/80">Plein Air</div>
-            </div>
-            <div class="text-center">
-              <div class="text-3xl md:text-4xl font-bold mb-2">500+</div>
-              <div class="text-white/80">Vues</div>
-            </div>
-          </div>
         </div>
       </div>
     </section>
