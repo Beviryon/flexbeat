@@ -1,54 +1,92 @@
 <template>
   <div class="pwa-install-container">
-    <!-- Bouton flottant principal - TOUJOURS VISIBLE EN DEV -->
-    <div class="pwa-float-button" @click="showPopup = true">
-      <div class="pwa-float-icon">📱</div>
-      <span class="pwa-float-text">Installer FlexBeat</span>
-    </div>
+    <!-- Bouton PWA ultra-visible -->
+    <button class="pwa-simple-button" @click="showPopup = true">
+      <div class="pwa-button-content">
+        <div class="pwa-icon">📱</div>
+        <span>Installer FlexBeat</span>
+      </div>
+    </button>
     
-    <!-- Popup d'installation -->
-    <div v-if="showPopup" class="pwa-popup-overlay" @click="closePopup">
-      <div class="pwa-popup" @click.stop>
-        <div class="pwa-popup-header">
-          <div class="pwa-popup-logo">
-            <div class="pwa-logo-placeholder">🏃‍♂️</div>
+    <!-- Modal PWA moderne et réactif -->
+    <Transition name="modal">
+      <div v-if="showPopup" class="pwa-modal-overlay" @click="closePopup">
+        <div class="pwa-modal" @click.stop>
+          <!-- Header avec logo et fermeture -->
+          <div class="pwa-modal-header">
+            <div class="pwa-logo-container">
+              <div class="pwa-logo">🏃‍♂️</div>
+              <div class="pwa-logo-text">
+                <h3>FlexBeat</h3>
+                <span>PWA</span>
+              </div>
+            </div>
+            <button @click="closePopup" class="pwa-close-btn">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
           </div>
-          <button @click="closePopup" class="pwa-close-btn">✕</button>
-        </div>
-        
-        <div class="pwa-popup-content">
-          <h3 class="pwa-popup-title">Installer FlexBeat</h3>
-          <p class="pwa-popup-description">
-            Transformez votre site en application mobile ! Accédez à FlexBeat depuis votre écran d'accueil.
-          </p>
           
-          <div class="pwa-features">
-            <div class="pwa-feature">
-              <span class="pwa-feature-icon">🚀</span>
-              <span>Accès rapide depuis l'écran d'accueil</span>
-            </div>
-            <div class="pwa-feature">
-              <span class="pwa-feature-icon">📱</span>
-              <span>Apparence comme une vraie application</span>
-            </div>
-            <div class="pwa-feature">
-              <span class="pwa-feature-icon">⚡</span>
-              <span>Fonctionne même hors ligne</span>
+          <!-- Contenu principal -->
+          <div class="pwa-modal-content">
+            <h2 class="pwa-title">Installer FlexBeat</h2>
+            <p class="pwa-description">
+              Transformez votre site en application mobile et accédez à FlexBeat depuis votre écran d'accueil !
+            </p>
+            
+            <!-- Fonctionnalités avec icônes -->
+            <div class="pwa-features">
+              <div class="pwa-feature">
+                <div class="feature-icon">🚀</div>
+                <div class="feature-text">
+                  <h4>Accès rapide</h4>
+                  <p>Depuis votre écran d'accueil</p>
+                </div>
+              </div>
+              
+              <div class="pwa-feature">
+                <div class="feature-icon">📱</div>
+                <div class="feature-text">
+                  <h4>App native</h4>
+                  <p>Comme une vraie application</p>
+                </div>
+              </div>
+              
+              <div class="pwa-feature">
+                <div class="feature-icon">⚡</div>
+                <div class="feature-text">
+                  <h4>Hors ligne</h4>
+                  <p>Fonctionne sans internet</p>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-        
-        <div class="pwa-popup-actions">
-          <button @click="installPWA" class="pwa-install-btn">
-            <span class="pwa-install-icon">📲</span>
-            Installer maintenant
-          </button>
-          <button @click="closePopup" class="pwa-cancel-btn">
-            Plus tard
-          </button>
+          
+          <!-- Actions avec animations -->
+          <div class="pwa-modal-actions">
+            <button @click="installPWA" class="pwa-install-btn" :class="{ 'loading': isInstalling }">
+              <span v-if="!isInstalling" class="btn-content">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                  <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                Installer maintenant
+              </span>
+              <span v-else class="loading-spinner">
+                <div class="spinner"></div>
+                Installation...
+              </span>
+            </button>
+            
+            <button @click="closePopup" class="pwa-cancel-btn">
+              Plus tard
+            </button>
+          </div>
         </div>
       </div>
-    </div>
+    </Transition>
   </div>
 </template>
 
@@ -57,9 +95,10 @@ import { ref, onMounted, onUnmounted } from 'vue'
 
 const showPopup = ref(false)
 const deferredPrompt = ref(null)
+const isInstalling = ref(false)
 
 onMounted(() => {
-  console.log('PWA: Composant monté')
+  console.log('PWA: Composant monté - recherche du prompt d\'installation...')
   
   // Écouter l'événement beforeinstallprompt
   window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt)
@@ -69,7 +108,7 @@ onMounted(() => {
       window.navigator.standalone === true) {
     console.log('PWA: Application déjà installée')
   } else {
-    console.log('PWA: Application non installée - bouton visible')
+    console.log('PWA: Application non installée - en attente du prompt')
   }
 })
 
@@ -78,39 +117,52 @@ onUnmounted(() => {
 })
 
 const handleBeforeInstallPrompt = (e) => {
+  console.log('PWA: Prompt d\'installation détecté !')
+  
   // Empêcher l'affichage automatique du prompt
   e.preventDefault()
   
   // Stocker l'événement pour l'utiliser plus tard
   deferredPrompt.value = e
   
-  console.log('PWA: Prompt d\'installation disponible')
+  console.log('PWA: Prompt stocké et prêt à être utilisé')
 }
 
 const installPWA = async () => {
   console.log('PWA: Tentative d\'installation...')
+  isInstalling.value = true
   
   if (!deferredPrompt.value) {
-    console.log('PWA: Aucun prompt disponible - simulation en dev')
-    showSuccessMessage()
-    showPopup.value = false
+    console.log('PWA: Aucun prompt disponible - l\'installation PWA n\'est pas possible')
+    setTimeout(() => {
+      alert('L\'installation PWA n\'est pas disponible sur ce navigateur ou cette page. Assurez-vous que :\n\n1. Vous utilisez HTTPS ou localhost\n2. Votre navigateur supporte les PWA\n3. La page respecte les critères d\'installation')
+      isInstalling.value = false
+      showPopup.value = false
+    }, 500)
     return
   }
   
   try {
-    console.log('PWA: Déclenchement du prompt...')
+    console.log('PWA: Déclenchement du prompt d\'installation...')
     
-    // Afficher le prompt d'installation
+    // Afficher le prompt d'installation natif du navigateur
     deferredPrompt.value.prompt()
     
     // Attendre la réponse de l'utilisateur
     const { outcome } = await deferredPrompt.value.userChoice
     
     if (outcome === 'accepted') {
-      console.log('PWA: Installation acceptée')
-      showSuccessMessage()
+      console.log('PWA: Installation acceptée par l\'utilisateur !')
+      setTimeout(() => {
+        alert('🎉 FlexBeat a été installé avec succès ! Vous pouvez maintenant l\'ouvrir depuis votre écran d\'accueil.')
+        showPopup.value = false
+      }, 1000)
     } else {
-      console.log('PWA: Installation refusée')
+      console.log('PWA: Installation refusée par l\'utilisateur')
+      setTimeout(() => {
+        alert('Installation annulée. Vous pouvez réessayer plus tard.')
+        showPopup.value = false
+      }, 500)
     }
     
     // Réinitialiser le prompt
@@ -118,103 +170,86 @@ const installPWA = async () => {
     
   } catch (error) {
     console.error('PWA: Erreur lors de l\'installation:', error)
-    showSuccessMessage()
+    setTimeout(() => {
+      alert('Erreur lors de l\'installation : ' + error.message)
+      showPopup.value = false
+    }, 500)
   }
   
-  showPopup.value = false
+  isInstalling.value = false
 }
 
 const closePopup = () => {
   showPopup.value = false
 }
-
-const showSuccessMessage = () => {
-  const successNotification = document.createElement('div')
-  successNotification.className = 'pwa-success-notification'
-  successNotification.innerHTML = `
-    <div class="pwa-success-content">
-      <span class="pwa-success-icon">🎉</span>
-      <span>FlexBeat installé avec succès !</span>
-    </div>
-  `
-  
-  document.body.appendChild(successNotification)
-  
-  setTimeout(() => {
-    if (successNotification.parentNode) {
-      successNotification.parentNode.removeChild(successNotification)
-    }
-  }, 3000)
-}
 </script>
 
 <style scoped>
-/* Bouton flottant principal */
-.pwa-float-button {
+/* Bouton PWA moderne */
+.pwa-simple-button {
   position: fixed;
-  bottom: 30px;
-  right: 30px;
+  bottom: 50px;
+  right: 50px;
   background: linear-gradient(135deg, #FF3B6A, #FFDD00);
   color: white;
   border: none;
   padding: 16px 24px;
   border-radius: 50px;
   cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  z-index: 9999;
   box-shadow: 0 8px 25px rgba(255, 59, 106, 0.4);
-  transition: all 0.3s ease;
-  z-index: 1000;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  animation: float 3s ease-in-out infinite;
+}
+
+.pwa-simple-button:hover {
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 15px 35px rgba(255, 59, 106, 0.6);
+}
+
+.pwa-button-content {
   display: flex;
   align-items: center;
   gap: 12px;
-  font-weight: bold;
-  font-size: 16px;
-  animation: bounce 2s infinite;
 }
 
-.pwa-float-button:hover {
-  transform: translateY(-3px) scale(1.05);
-  box-shadow: 0 12px 35px rgba(255, 59, 106, 0.6);
+.pwa-icon {
+  font-size: 20px;
+  animation: pulse 2s ease-in-out infinite;
 }
 
-.pwa-float-icon {
-  font-size: 24px;
-  animation: pulse 2s infinite;
-}
-
-.pwa-float-text {
-  white-space: nowrap;
-}
-
-/* Popup d'installation */
-.pwa-popup-overlay {
+/* Modal PWA moderne */
+.pwa-modal-overlay {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
   background: rgba(0, 0, 0, 0.8);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  z-index: 1001;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  z-index: 10000;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 20px;
-  animation: fadeIn 0.3s ease-out;
 }
 
-.pwa-popup {
+.pwa-modal {
   background: white;
   border-radius: 24px;
   max-width: 500px;
   width: 100%;
   max-height: 90vh;
   overflow-y: auto;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-  animation: slideUp 0.3s ease-out;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+  position: relative;
 }
 
-.pwa-popup-header {
+/* Header du modal */
+.pwa-modal-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -222,80 +257,129 @@ const showSuccessMessage = () => {
   margin-bottom: 20px;
 }
 
-.pwa-logo-placeholder {
+.pwa-logo-container {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.pwa-logo {
   width: 60px;
   height: 60px;
   border-radius: 16px;
-  background: linear-gradient(45deg, #FF3B6A, #FFDD00);
+  background: linear-gradient(135deg, #FF3B6A, #FFDD00);
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 32px;
   color: white;
+  animation: logoFloat 3s ease-in-out infinite;
+}
+
+.pwa-logo-text h3 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: bold;
+  color: #5D3A00;
+}
+
+.pwa-logo-text span {
+  font-size: 12px;
+  color: #FF3B6A;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .pwa-close-btn {
-  background: #f3f4f6;
+  background: #f8f9fa;
   border: none;
-  width: 36px;
-  height: 36px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   cursor: pointer;
-  font-size: 18px;
-  color: #6b7280;
+  color: #6c757d;
   transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .pwa-close-btn:hover {
-  background: #e5e7eb;
-  color: #374151;
+  background: #e9ecef;
+  color: #495057;
+  transform: scale(1.1);
 }
 
-.pwa-popup-content {
+/* Contenu du modal */
+.pwa-modal-content {
   padding: 0 24px 24px 24px;
 }
 
-.pwa-popup-title {
-  font-size: 24px;
+.pwa-title {
+  font-size: 28px;
   font-weight: bold;
-  color: #1f2937;
+  color: #5D3A00;
   margin-bottom: 12px;
   text-align: center;
 }
 
-.pwa-popup-description {
-  color: #6b7280;
+.pwa-description {
+  color: #6c757d;
   line-height: 1.6;
-  margin-bottom: 24px;
+  margin-bottom: 32px;
   text-align: center;
+  font-size: 16px;
 }
 
+/* Fonctionnalités */
 .pwa-features {
   display: grid;
-  gap: 12px;
-  margin-bottom: 24px;
+  gap: 20px;
+  margin-bottom: 32px;
 }
 
 .pwa-feature {
   display: flex;
   align-items: center;
-  gap: 12px;
-  padding: 12px;
-  background: #f9fafb;
-  border-radius: 12px;
-  font-size: 14px;
-  color: #374151;
+  gap: 16px;
+  padding: 20px;
+  background: linear-gradient(135deg, #f8f9fa, #ffffff);
+  border-radius: 16px;
+  border: 1px solid #e9ecef;
+  transition: all 0.3s ease;
 }
 
-.pwa-feature-icon {
-  font-size: 20px;
+.pwa-feature:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  border-color: #FF3B6A;
+}
+
+.feature-icon {
+  font-size: 32px;
   flex-shrink: 0;
+  animation: featureBounce 2s ease-in-out infinite;
 }
 
-.pwa-popup-actions {
+.feature-text h4 {
+  margin: 0 0 4px 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: #5D3A00;
+}
+
+.feature-text p {
+  margin: 0;
+  color: #6c757d;
+  font-size: 14px;
+}
+
+/* Actions du modal */
+.pwa-modal-actions {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 16px;
   padding: 0 24px 24px 24px;
 }
 
@@ -303,7 +387,7 @@ const showSuccessMessage = () => {
   background: linear-gradient(135deg, #5D3A00, #2C2D5B);
   color: white;
   border: none;
-  padding: 16px 24px;
+  padding: 18px 32px;
   border-radius: 16px;
   font-weight: bold;
   font-size: 16px;
@@ -312,23 +396,47 @@ const showSuccessMessage = () => {
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 12px;
+  position: relative;
+  overflow: hidden;
+}
+
+.pwa-install-btn:hover:not(.loading) {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(93, 58, 0, 0.4);
+}
+
+.pwa-install-btn.loading {
+  background: linear-gradient(135deg, #6c757d, #495057);
+  cursor: not-allowed;
+}
+
+.btn-content {
+  display: flex;
+  align-items: center;
   gap: 8px;
 }
 
-.pwa-install-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(93, 58, 0, 0.3);
+.loading-spinner {
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
-.pwa-install-icon {
-  font-size: 20px;
+.spinner {
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top: 2px solid white;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
 }
 
 .pwa-cancel-btn {
-  background: #f3f4f6;
-  color: #6b7280;
+  background: #f8f9fa;
+  color: #6c757d;
   border: none;
-  padding: 12px 24px;
+  padding: 16px 32px;
   border-radius: 12px;
   font-weight: 500;
   cursor: pointer;
@@ -336,116 +444,88 @@ const showSuccessMessage = () => {
 }
 
 .pwa-cancel-btn:hover {
-  background: #e5e7eb;
-  color: #374151;
-}
-
-/* Notification de succès */
-.pwa-success-notification {
-  position: fixed;
-  top: 30px;
-  right: 30px;
-  background: linear-gradient(135deg, #10b981, #059669);
-  color: white;
-  padding: 16px 24px;
-  border-radius: 16px;
-  box-shadow: 0 8px 25px rgba(16, 185, 129, 0.3);
-  z-index: 1002;
-  animation: slideInRight 0.3s ease-out;
-}
-
-.pwa-success-content {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  font-weight: 500;
-}
-
-.pwa-success-icon {
-  font-size: 20px;
+  background: #e9ecef;
+  color: #495057;
 }
 
 /* Animations */
-@keyframes bounce {
-  0%, 20%, 50%, 80%, 100% {
-    transform: translateY(0);
-  }
-  40% {
-    transform: translateY(-10px);
-  }
-  60% {
-    transform: translateY(-5px);
-  }
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
 }
 
 @keyframes pulse {
-  0%, 100% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.1);
-  }
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+@keyframes logoFloat {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-5px) rotate(5deg); }
 }
 
-@keyframes slideUp {
-  from {
-    transform: translateY(30px);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
+@keyframes featureBounce {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
 }
 
-@keyframes slideInRight {
-  from {
-    transform: translateX(100%);
-    opacity: 0;
-  }
-  to {
-    transform: translateX(0);
-    opacity: 1;
-  }
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Transitions Vue */
+.modal-enter-active,
+.modal-leave-active {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.modal-enter-from {
+  opacity: 0;
+  transform: scale(0.9) translateY(20px);
+}
+
+.modal-leave-to {
+  opacity: 0;
+  transform: scale(0.9) translateY(-20px);
 }
 
 /* Responsive */
 @media (max-width: 768px) {
-  .pwa-float-button {
-    bottom: 20px;
-    right: 20px;
+  .pwa-simple-button {
+    bottom: 30px;
+    right: 30px;
     padding: 14px 20px;
     font-size: 14px;
   }
   
-  .pwa-float-icon {
-    font-size: 20px;
-  }
-  
-  .pwa-popup {
+  .pwa-modal {
     margin: 20px;
     max-height: calc(100vh - 40px);
   }
   
-  .pwa-popup-header {
+  .pwa-modal-header {
     padding: 20px 20px 0 20px;
   }
   
-  .pwa-popup-content {
+  .pwa-modal-content {
     padding: 0 20px 20px 20px;
   }
   
-  .pwa-popup-actions {
+  .pwa-modal-actions {
     padding: 0 20px 20px 20px;
+  }
+  
+  .pwa-title {
+    font-size: 24px;
+  }
+  
+  .pwa-feature {
+    padding: 16px;
+  }
+  
+  .feature-icon {
+    font-size: 24px;
   }
 }
 </style> 
