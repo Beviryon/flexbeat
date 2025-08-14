@@ -1,0 +1,97 @@
+{
+  "name": "FlexBeat - Association Sportive et Culturelle",
+  "short_name": "FlexBeat",
+  "description": "Association sportive basée à Brazzaville, Congo. Fitness, Club de Slam & Lecture, Cardio plein air. Le mouvement, c'est notre musique.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#5D3A00",
+  "theme_color": "#5D3A00",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "lang": "fr",
+  "categories": ["sports", "health", "lifestyle", "education"],
+  "icons": [
+    {
+      "src": "/logo.jpg",
+      "sizes": "16x16",
+      "type": "image/jpeg",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/logo.jpg",
+      "sizes": "32x32",
+      "type": "image/jpeg",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/logo.jpg",
+      "sizes": "180x180",
+      "type": "image/jpeg",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/logo.jpg",
+      "sizes": "192x192",
+      "type": "image/jpeg",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/logo.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg",
+      "purpose": "any maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/logo.jpg",
+      "sizes": "1280x720",
+      "type": "image/jpeg",
+      "form_factor": "wide"
+    },
+    {
+      "src": "/logo.jpg",
+      "sizes": "750x1334",
+      "type": "image/jpeg",
+      "form_factor": "narrow"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Activités",
+      "short_name": "Activités",
+      "description": "Voir nos activités sportives",
+      "url": "/activities",
+      "icons": [
+        {
+          "src": "/logo.jpg",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "Événements",
+      "short_name": "Événements",
+      "description": "Découvrir nos événements",
+      "url": "/events",
+      "icons": [
+        {
+          "src": "/logo.jpg",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "Adhésion",
+      "short_name": "Adhésion",
+      "description": "Rejoindre FlexBeat",
+      "url": "/join",
+      "icons": [
+        {
+          "src": "/logo.jpg",
+          "sizes": "96x96"
+        }
+      ]
+    }
+  ]
+} 

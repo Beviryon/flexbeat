@@ -1,175 +1,500 @@
 <template>
-  <div class="min-h-screen">
-    <!-- Hero Section Sportif -->
-    <section class="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
-      <!-- Background avec image sportive -->
-      <div class="absolute inset-0 bg-gradient-to-br from-cacao/90 via-indigo/90 to-raspberry/90"></div>
+  <div class="min-h-screen pt-20">
+    <!-- Hero Section -->
+    <section class="relative py-20 bg-gradient-to-br from-cacao to-raspberry text-white overflow-hidden">
+      <div class="absolute inset-0">
+        <div class="absolute top-0 right-0 w-96 h-96 bg-sunny/10 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-0 left-0 w-96 h-96 bg-indigo/10 rounded-full blur-3xl"></div>
+      </div>
       
-      <!-- Image de fond sportive -->
-      <div class="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-20" style="background-image: url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=1920&h=1080&fit=crop')"></div>
-      
-      <!-- Contenu principal -->
-      <div class="relative z-10 text-center text-white px-4 max-w-5xl mx-auto">
-        <div class="animate-fade-in">
-          <!-- Titre principal -->
-          <h1 class="text-6xl md:text-8xl font-black mb-8 tracking-tight">
-            <span class="text-sunny">flex</span><span class="text-white">Beat</span>
+      <div class="container mx-auto px-4 relative z-10">
+        <div class="max-w-4xl mx-auto text-center">
+          <h1 class="text-4xl md:text-6xl font-bold mb-6 animate-fade-in">
+            flexBeat
           </h1>
-          
-          <!-- Slogan -->
-          <p class="text-2xl md:text-3xl mb-8 text-white/95 font-light tracking-wide">
+          <p class="text-xl md:text-2xl text-white/90 leading-relaxed mb-8">
             Le mouvement, c'est notre musique
           </p>
-          
-          <!-- Description sportive -->
-          <p class="text-lg text-white/80 mb-12 max-w-3xl mx-auto leading-relaxed">
-            Association sportive à Brazzaville spécialisée dans le fitness, le cardio plein air et les activités culturelles. 
-            Rejoignez notre communauté active et transformez votre vie !
-          </p>
-          
-          <!-- Boutons CTA -->
-          <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <router-link to="/join" class="bg-white text-cacao font-bold text-lg px-8 py-4 rounded-full hover:bg-sunny hover:text-white transition-all duration-300 transform hover:scale-105">
-              Rejoindre FlexBeat
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <router-link 
+              to="/join"
+              class="btn-primary text-lg px-8 py-4"
+            >
+              Rejoindre la communauté
             </router-link>
-            <router-link to="/activities" class="border-2 border-white text-white font-semibold text-lg px-8 py-4 rounded-full hover:bg-white hover:text-cacao transition-all duration-300">
-              Voir nos activités
+            <router-link 
+              to="/activities"
+              class="btn-secondary text-lg px-8 py-4"
+            >
+              Découvrir nos activités
             </router-link>
+          </div>
+          
+          <!-- Bouton d'installation PWA -->
+          <div class="mt-8">
+            <button 
+              @click="showPWAInstallPrompt"
+              class="pwa-hero-btn group"
+            >
+              <span class="pwa-hero-icon">📱</span>
+              <span>Installer FlexBeat sur mobile</span>
+              <span class="pwa-hero-arrow">→</span>
+            </button>
+            <p class="text-sm text-white/70 mt-3">
+              Transformez votre site en application mobile
+            </p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Section Activités Sportives -->
+    <!-- Nos Activités Sportives & Culturelles -->
     <section class="py-20 bg-white">
       <div class="container mx-auto px-4">
         <div class="text-center mb-16">
-          <h2 class="text-4xl md:text-5xl font-bold text-indigo mb-6">Nos Activités Sportives & Culturelles</h2>
-          <p class="text-xl text-cacao max-w-3xl mx-auto">
-            Trois disciplines sportives et une activité culturelle pour un weekend complet et varié en plein air
+          <h2 class="section-title">Nos Activités Sportives & Culturelles</h2>
+          <p class="section-subtitle">
+            Découvrez notre gamme d'activités variées pour tous les niveaux
           </p>
         </div>
         
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
           <!-- Fitness -->
-          <div class="bg-gradient-to-br from-cacao to-cacao/80 rounded-2xl p-8 text-white text-center group hover:scale-105 transition-transform duration-300">
-            <div class="w-20 h-20 mx-auto mb-6 bg-white/20 rounded-full flex items-center justify-center">
-              <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-              </svg>
-            </div>
-            <h3 class="text-2xl font-bold mb-4">Fitness & Musculation</h3>
-            <p class="text-white/90 mb-6 leading-relaxed">
-              Renforcement musculaire et exercices fonctionnels en plein air. 
-              Utilisez votre poids corporel et des équipements portables.
+          <div class="group bg-gradient-to-br from-cacao/5 to-indigo/5 rounded-2xl p-8 hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
+            <div class="text-4xl mb-4">💪</div>
+            <h3 class="text-xl font-bold text-cacao mb-3">Fitness & Musculation</h3>
+            <p class="text-gray-600 mb-4">
+              Renforcez votre corps avec nos séances de fitness en plein air
             </p>
+            <router-link to="/activities" class="text-raspberry hover:underline font-medium">
+              En savoir plus →
+            </router-link>
           </div>
           
           <!-- Club de Slam & Lecture -->
-          <div class="bg-gradient-to-br from-raspberry to-raspberry/80 rounded-2xl p-8 text-white text-center group hover:scale-105 transition-transform duration-300">
-            <div class="w-20 h-20 mx-auto mb-6 bg-white/20 rounded-full flex items-center justify-center">
-              <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
-              </svg>
-            </div>
-            <h3 class="text-2xl font-bold mb-4">Club de Slam & Lecture</h3>
-            <p class="text-white/90 mb-6 leading-relaxed">
-              Découvrez la poésie orale, partagez vos lectures et développez votre expression. 
-              Une activité culturelle pour enrichir l'esprit et la créativité.
+          <div class="group bg-gradient-to-br from-raspberry/5 to-sunny/5 rounded-2xl p-8 hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
+            <div class="text-4xl mb-4">🎭</div>
+            <h3 class="text-xl font-bold text-cacao mb-3">Club de Slam & Lecture</h3>
+            <p class="text-gray-600 mb-4">
+              Exprimez votre créativité à travers la poésie et la lecture
             </p>
+            <router-link to="/activities" class="text-raspberry hover:underline font-medium">
+              En savoir plus →
+            </router-link>
           </div>
           
-          <!-- Cardio -->
-          <div class="bg-gradient-to-br from-sunny to-sunny/80 rounded-2xl p-8 text-white text-center group hover:scale-105 transition-transform duration-300">
-            <div class="w-20 h-20 mx-auto mb-6 bg-white/20 rounded-full flex items-center justify-center">
-              <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-              </svg>
-            </div>
-            <h3 class="text-2xl font-bold mb-4">Cardio Plein Air</h3>
-            <p class="text-white/90 mb-6 leading-relaxed">
-              Course à pied, exercices cardio et entraînement en extérieur. 
-              Profitez du climat de Brazzaville et de la nature.
+          <!-- Cardio Plein Air -->
+          <div class="group bg-gradient-to-br from-sunny/5 to-cacao/5 rounded-2xl p-8 hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
+            <div class="text-4xl mb-4">🏃‍♂️</div>
+            <h3 class="text-xl font-bold text-cacao mb-3">Cardio Plein Air</h3>
+            <p class="text-gray-600 mb-4">
+              Améliorez votre endurance avec nos sessions cardio dynamiques
             </p>
+            <router-link to="/activities" class="text-raspberry hover:underline font-medium">
+              En savoir plus →
+            </router-link>
           </div>
         </div>
         
-        <!-- Bouton Voir plus d'activités -->
         <div class="text-center mt-12">
-          <router-link to="/activities" class="inline-flex items-center px-8 py-4 bg-indigo text-white font-semibold text-lg rounded-full hover:bg-indigo/90 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
-            <span>Voir plus d'activités</span>
-            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-            </svg>
+          <router-link to="/activities" class="btn-primary text-lg px-8 py-4">
+            Voir toutes nos activités
           </router-link>
         </div>
       </div>
     </section>
 
-    <!-- Section Équipements -->
-    <section class="py-20 bg-white">
+    <!-- Section PWA - Application Mobile -->
+    <section class="py-20 bg-gradient-to-br from-indigo/5 to-cacao/5">
       <div class="container mx-auto px-4">
         <div class="text-center mb-16">
-          <h2 class="text-4xl md:text-5xl font-bold text-indigo mb-6">Nos Équipements</h2>
-          <p class="text-xl text-cacao">Tout le matériel portable pour vos entraînements en plein air</p>
+          <h2 class="section-title">📱 FlexBeat sur Mobile</h2>
+          <p class="section-subtitle">
+            Transformez votre site en application mobile et accédez à FlexBeat depuis votre écran d'accueil
+          </p>
         </div>
         
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-8 max-w-6xl mx-auto">
-          <div class="text-center">
-            <div class="w-16 h-16 mx-auto mb-4 bg-cacao/10 rounded-full flex items-center justify-center">
-              <span class="text-2xl">🏋️</span>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
+          <!-- Contenu PWA -->
+          <div class="space-y-8">
+            <div class="space-y-6">
+              <h3 class="text-2xl font-bold text-cacao">
+                Pourquoi installer FlexBeat ?
+              </h3>
+              
+              <div class="space-y-4">
+                <div class="flex items-start gap-4">
+                  <div class="w-12 h-12 bg-gradient-to-br from-raspberry to-sunny rounded-xl flex items-center justify-center text-white text-xl font-bold flex-shrink-0">
+                    🚀
+                  </div>
+                  <div>
+                    <h4 class="font-semibold text-gray-800 mb-1">Accès Instantané</h4>
+                    <p class="text-gray-600 text-sm">Ouvrez FlexBeat en un clic depuis votre écran d'accueil</p>
+                  </div>
+                </div>
+                
+                <div class="flex items-start gap-4">
+                  <div class="w-12 h-12 bg-gradient-to-br from-sunny to-cacao rounded-xl flex items-center justify-center text-white text-xl font-bold flex-shrink-0">
+                    📱
+                  </div>
+                  <div>
+                    <h4 class="font-semibold text-gray-800 mb-1">Apparence Native</h4>
+                    <p class="text-gray-600 text-sm">Profitez d'une expérience comme une vraie application mobile</p>
+                  </div>
+                </div>
+                
+                <div class="flex items-start gap-4">
+                  <div class="w-12 h-12 bg-gradient-to-br from-cacao to-indigo rounded-xl flex items-center justify-center text-white text-xl font-bold flex-shrink-0">
+                    ⚡
+                  </div>
+                  <div>
+                    <h4 class="font-semibold text-gray-800 mb-1">Mode Hors Ligne</h4>
+                    <p class="text-gray-600 text-sm">Accédez aux informations même sans connexion internet</p>
+                  </div>
+                </div>
+                
+                <div class="flex items-start gap-4">
+                  <div class="w-12 h-12 bg-gradient-to-br from-indigo to-raspberry rounded-xl flex items-center justify-center text-white text-xl font-bold flex-shrink-0">
+                    🔔
+                  </div>
+                  <div>
+                    <h4 class="font-semibold text-gray-800 mb-1">Notifications</h4>
+                    <p class="text-gray-600 text-sm">Restez informé des événements et activités FlexBeat</p>
+                  </div>
+                </div>
+              </div>
             </div>
-            <h3 class="font-bold text-cacao mb-2">Matériel Fitness</h3>
-            <p class="text-sm text-gray-600">Élastiques, haltères portables, tapis de sol</p>
+            
+            <!-- Bouton d'installation PWA -->
+            <div class="pt-4">
+              <button 
+                @click="showPWAInstallPrompt"
+                class="pwa-section-btn group w-full"
+              >
+                <span class="pwa-section-icon">📲</span>
+                <span>Installer FlexBeat sur Mobile</span>
+                <span class="pwa-section-arrow">→</span>
+              </button>
+              <p class="text-xs text-gray-500 mt-2 text-center">
+                Gratuit • Aucune donnée personnelle • Mise à jour automatique
+              </p>
+            </div>
           </div>
           
-          <div class="text-center">
-            <div class="w-16 h-16 mx-auto mb-4 bg-raspberry/10 rounded-full flex items-center justify-center">
-              <span class="text-2xl">📚</span>
+          <!-- Visualisation Mobile -->
+          <div class="relative">
+            <div class="relative mx-auto w-64 h-96 bg-gradient-to-b from-cacao to-indigo rounded-3xl p-4 shadow-2xl">
+              <!-- Écran du téléphone -->
+              <div class="w-full h-full bg-white rounded-2xl overflow-hidden relative">
+                <!-- Barre de statut -->
+                <div class="h-6 bg-cacao flex items-center justify-between px-4 text-white text-xs">
+                  <span>9:41</span>
+                  <div class="flex items-center gap-1">
+                    <div class="w-3 h-1.5 bg-white rounded-full"></div>
+                    <div class="w-3 h-1.5 bg-white rounded-full"></div>
+                    <div class="w-3 h-1.5 bg-white rounded-full"></div>
+                  </div>
+                </div>
+                
+                <!-- Contenu de l'app -->
+                <div class="p-4 space-y-3">
+                  <!-- Logo FlexBeat -->
+                  <div class="text-center py-4">
+                    <div class="w-16 h-16 bg-gradient-to-br from-raspberry to-sunny rounded-2xl mx-auto mb-2 flex items-center justify-center text-white text-2xl font-bold">
+                      🏃‍♂️
+                    </div>
+                    <h3 class="text-lg font-bold text-cacao">flexBeat</h3>
+                    <p class="text-xs text-gray-500">Le mouvement, c'est notre musique</p>
+                  </div>
+                  
+                  <!-- Menu rapide -->
+                  <div class="grid grid-cols-2 gap-2">
+                    <div class="bg-gradient-to-br from-cacao/10 to-indigo/10 rounded-xl p-3 text-center">
+                      <div class="text-2xl mb-1">💪</div>
+                      <p class="text-xs font-medium text-cacao">Fitness</p>
+                    </div>
+                    <div class="bg-gradient-to-br from-raspberry/10 to-sunny/10 rounded-xl p-3 text-center">
+                      <div class="text-2xl mb-1">🎭</div>
+                      <p class="text-xs font-medium text-raspberry">Slam</p>
+                    </div>
+                    <div class="bg-gradient-to-br from-sunny/10 to-cacao/10 rounded-xl p-3 text-center">
+                      <div class="text-2xl mb-1">🏃‍♂️</div>
+                      <p class="text-xs font-medium text-sunny">Cardio</p>
+                    </div>
+                    <div class="bg-gradient-to-br from-indigo/10 to-raspberry/10 rounded-xl p-3 text-center">
+                      <div class="text-2xl mb-1">📅</div>
+                      <p class="text-xs font-medium text-indigo">Événements</p>
+                    </div>
+                  </div>
+                  
+                  <!-- Bouton d'action -->
+                  <div class="bg-gradient-to-r from-raspberry to-sunny rounded-xl p-3 text-center text-white">
+                    <p class="text-xs font-bold">Rejoindre FlexBeat</p>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Bouton home -->
+              <div class="absolute bottom-2 left-1/2 transform -translate-x-1/2 w-12 h-1 bg-white rounded-full"></div>
             </div>
-            <h3 class="font-bold text-raspberry mb-2">Matériel Culturel</h3>
-            <p class="text-sm text-gray-600">Livres, micro, système audio portable</p>
-          </div>
-          
-          <div class="text-center">
-            <div class="w-16 h-16 mx-auto mb-4 bg-sunny/10 rounded-full flex items-center justify-center">
-              <span class="text-2xl">⏱️</span>
-            </div>
-            <h3 class="font-bold text-sunny mb-2">Équipement Cardio</h3>
-            <p class="text-sm text-gray-600">Chronomètres, cônes, gilets réfléchissants</p>
-          </div>
-          
-          <div class="text-center">
-            <div class="w-16 h-16 mx-auto mb-4 bg-indigo/10 rounded-full flex items-center justify-center">
-              <span class="text-2xl">🧘‍♀️</span>
-            </div>
-            <h3 class="font-bold text-indigo mb-2">Bien-être</h3>
-            <p class="text-sm text-gray-600">Tapis de yoga, coussins méditation, bouteilles d'eau</p>
+            
+            <!-- Éléments décoratifs -->
+            <div class="absolute -top-4 -right-4 w-8 h-8 bg-gradient-to-br from-sunny to-raspberry rounded-full animate-bounce"></div>
+            <div class="absolute -bottom-4 -left-4 w-6 h-6 bg-gradient-to-br from-raspberry to-cacao rounded-full animate-pulse"></div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Section CTA Sportive -->
-    <section class="py-20 bg-gradient-to-r from-cacao to-indigo text-white">
-      <div class="container mx-auto px-4 text-center">
-        <h2 class="text-4xl md:text-5xl font-bold mb-8">Prêt à commencer ?</h2>
-        <p class="text-xl mb-12 text-white/90 max-w-3xl mx-auto">
-          Rejoignez FlexBeat et commencez votre transformation physique dès cette semaine !
-        </p>
-        <div class="flex flex-col sm:flex-row gap-6 justify-center">
-          <router-link to="/join" class="bg-white text-cacao font-bold text-xl px-10 py-5 rounded-full hover:bg-sunny hover:text-white transition-all duration-300 transform hover:scale-105">
-            Commencer l'entraînement
-          </router-link>
-          <router-link to="/contact" class="border-2 border-white text-white font-semibold text-xl py-5 px-10 rounded-full hover:bg-white hover:text-cacao transition-all duration-300">
-            Demander des infos
-          </router-link>
-        </div>
-      </div>
-    </section>
+    <!-- PWA Install Button -->
+    <PWAInstallButton />
   </div>
 </template>
 
 <script setup>
-// Pas besoin de composants complexes pour une page sportive authentique
+import PWAInstallButton from '../components/PWAInstallButton.vue'
+import { ref, onMounted } from 'vue'
+
+let deferredPrompt = null
+
+onMounted(() => {
+  // Écouter l'événement d'installation PWA
+  window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt)
+  
+  // Vérifier si l'app est déjà installée
+  if (window.matchMedia('(display-mode: standalone)').matches) {
+    console.log('App déjà installée')
+  }
+})
+
+const handleBeforeInstallPrompt = (e) => {
+  e.preventDefault()
+  deferredPrompt = e
+  console.log('PWA install prompt détecté')
+}
+
+const showPWAInstallPrompt = async () => {
+  if (deferredPrompt) {
+    deferredPrompt.prompt()
+    const { outcome } = await deferredPrompt.userChoice
+    
+    if (outcome === 'accepted') {
+      console.log('FlexBeat installé avec succès !')
+      showSuccessMessage()
+    } else {
+      console.log('Installation annulée par l\'utilisateur')
+    }
+    
+    deferredPrompt = null
+  } else {
+    // En mode développement, simuler l'installation
+    console.log('Mode développement - simulation d\'installation')
+    showSuccessMessage()
+  }
+}
+
+const showSuccessMessage = () => {
+  // Créer une notification de succès
+  const successNotification = document.createElement('div')
+  successNotification.className = 'pwa-success-hero'
+  successNotification.innerHTML = `
+    <div class="pwa-success-hero-content">
+      <span class="pwa-success-hero-icon">🎉</span>
+      <span>FlexBeat installé avec succès !</span>
+    </div>
+  `
+  
+  document.body.appendChild(successNotification)
+  
+  // Supprimer après 4 secondes
+  setTimeout(() => {
+    if (successNotification.parentNode) {
+      successNotification.parentNode.removeChild(successNotification)
+    }
+  }, 4000)
+}
 </script>
+
+<style scoped>
+/* Bouton PWA dans le hero */
+.pwa-hero-btn {
+  background: linear-gradient(135deg, #FFDD00, #FF3B6A);
+  color: #5D3A00;
+  border: none;
+  padding: 16px 32px;
+  border-radius: 50px;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: 0 8px 25px rgba(255, 221, 0, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.pwa-hero-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.5s;
+}
+
+.pwa-hero-btn:hover::before {
+  left: 100%;
+}
+
+.pwa-hero-btn:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 12px 35px rgba(255, 221, 0, 0.5);
+}
+
+.pwa-hero-icon {
+  font-size: 20px;
+  animation: pulse 2s infinite;
+}
+
+.pwa-hero-arrow {
+  font-size: 18px;
+  transition: transform 0.3s ease;
+}
+
+.pwa-hero-btn:hover .pwa-hero-arrow {
+  transform: translateX(5px);
+}
+
+/* Notification de succès dans le hero */
+.pwa-success-hero {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: linear-gradient(135deg, #10b981, #059669);
+  color: white;
+  padding: 20px 32px;
+  border-radius: 20px;
+  box-shadow: 0 15px 40px rgba(16, 185, 129, 0.4);
+  z-index: 1002;
+  animation: heroSuccess 0.5s ease-out;
+}
+
+.pwa-success-hero-content {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.pwa-success-hero-icon {
+  font-size: 24px;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+@keyframes heroSuccess {
+  0% {
+    transform: translate(-50%, -50%) scale(0.5);
+    opacity: 0;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .pwa-hero-btn {
+    padding: 14px 24px;
+    font-size: 14px;
+  }
+  
+  .pwa-hero-icon {
+    font-size: 18px;
+  }
+  
+  .pwa-success-hero {
+    padding: 16px 24px;
+    font-size: 16px;
+  }
+  
+  .pwa-success-hero-content {
+    font-size: 16px;
+  }
+  
+  .pwa-success-hero-icon {
+    font-size: 20px;
+  }
+}
+
+/* Bouton PWA de la section */
+.pwa-section-btn {
+  background: linear-gradient(135deg, #5D3A00, #2C2D5B);
+  color: white;
+  border: none;
+  padding: 18px 32px;
+  border-radius: 16px;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  box-shadow: 0 8px 25px rgba(93, 58, 0, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.pwa-section-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.pwa-section-btn:hover::before {
+  left: 100%;
+}
+
+.pwa-section-btn:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 12px 35px rgba(93, 58, 0, 0.3);
+}
+
+.pwa-section-icon {
+  font-size: 20px;
+  animation: pulse 2s infinite;
+}
+
+.pwa-section-arrow {
+  font-size: 18px;
+  transition: transform 0.3s ease;
+}
+
+.pwa-section-btn:hover .pwa-section-arrow {
+  transform: translateX(5px);
+}
+</style>
