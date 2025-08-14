@@ -1,120 +1,108 @@
-const CACHE_NAME = 'flexbeat-v1.0.0';
+// Service Worker pour FlexBeat
+const CACHE_NAME = 'flexbeat-v1.0.0'
 const urlsToCache = [
   '/',
-  '/about',
-  '/activities',
-  '/events',
-  '/gallery',
-  '/join',
-  '/contact',
-  '/legal',
-  '/src/assets/main.css',
-  '/src/main.js'
-];
+  '/offline.html',
+  '/manifest.json'
+]
 
 // Installation du Service Worker
 self.addEventListener('install', (event) => {
+  console.log('Service Worker: Installation en cours...')
   event.waitUntil(
     caches.open(CACHE_NAME)
       .then((cache) => {
-        console.log('Cache ouvert');
-        return cache.addAll(urlsToCache);
+        console.log('Service Worker: Cache ouvert')
+        return cache.addAll(urlsToCache)
       })
-  );
-});
+      .catch((error) => {
+        console.error('Service Worker: Erreur lors de l\'installation:', error)
+      })
+  )
+})
 
 // Activation du Service Worker
 self.addEventListener('activate', (event) => {
+  console.log('Service Worker: Activation en cours...')
   event.waitUntil(
     caches.keys().then((cacheNames) => {
       return Promise.all(
         cacheNames.map((cacheName) => {
           if (cacheName !== CACHE_NAME) {
-            console.log('Suppression de l\'ancien cache:', cacheName);
-            return caches.delete(cacheName);
+            console.log('Service Worker: Suppression de l\'ancien cache:', cacheName)
+            return caches.delete(cacheName)
           }
         })
-      );
+      )
     })
-  );
-});
+  )
+})
 
 // Interception des requêtes
 self.addEventListener('fetch', (event) => {
+  // Ignorer les requêtes chrome-extension et autres schémas non supportés
+  if (event.request.url.startsWith('chrome-extension://') || 
+      event.request.url.startsWith('chrome://') ||
+      event.request.url.startsWith('moz-extension://') ||
+      event.request.url.startsWith('safari-extension://')) {
+    return
+  }
+  
+  // Ignorer les requêtes non-GET
+  if (event.request.method !== 'GET') {
+    return
+  }
+  
   event.respondWith(
     caches.match(event.request)
       .then((response) => {
         // Retourner la réponse du cache si elle existe
         if (response) {
-          return response;
+          return response
         }
         
         // Sinon, faire la requête réseau
         return fetch(event.request)
           .then((response) => {
-            // Vérifier si la réponse est valide
+            // Vérifier que la réponse est valide
             if (!response || response.status !== 200 || response.type !== 'basic') {
-              return response;
+              return response
             }
             
-            // Cloner la réponse
-            const responseToCache = response.clone();
-            
-            // Mettre en cache la nouvelle réponse
+            // Cloner la réponse pour la mettre en cache
+            const responseToCache = response.clone()
             caches.open(CACHE_NAME)
               .then((cache) => {
-                cache.put(event.request, responseToCache);
-              });
+                cache.put(event.request, responseToCache)
+              })
+              .catch((error) => {
+                console.error('Service Worker: Erreur lors de la mise en cache:', error)
+              })
             
-            return response;
+            return response
           })
           .catch(() => {
-            // En cas d'erreur réseau, retourner une page offline
+            // En cas d'erreur réseau, retourner la page offline
             if (event.request.destination === 'document') {
-              return caches.match('/offline.html');
+              return caches.match('/offline.html')
             }
-          });
+          })
       })
-  );
-});
+  )
+})
 
-// Gestion des notifications push (pour les événements FlexBeat)
+// Gestion des notifications push (pour une utilisation future)
 self.addEventListener('push', (event) => {
-  const options = {
-    body: event.data ? event.data.text() : 'Nouvel événement FlexBeat !',
-    icon: '/icon-192x192.png',
-    badge: '/icon-96x96.png',
-    vibrate: [100, 50, 100],
-    data: {
-      dateOfArrival: Date.now(),
-      primaryKey: 1
-    },
-    actions: [
-      {
-        action: 'explore',
-        title: 'Voir l\'événement',
-        icon: '/icon-96x96.png'
-      },
-      {
-        action: 'close',
-        title: 'Fermer',
-        icon: '/icon-96x96.png'
-      }
-    ]
-  };
-
-  event.waitUntil(
-    self.registration.showNotification('FlexBeat', options)
-  );
-});
+  console.log('Service Worker: Notification push reçue')
+  // Ici vous pourrez ajouter la logique pour afficher des notifications
+})
 
 // Gestion des clics sur les notifications
 self.addEventListener('notificationclick', (event) => {
-  event.notification.close();
-
-  if (event.action === 'explore') {
-    event.waitUntil(
-      clients.openWindow('/events')
-    );
-  }
-}); 
+  console.log('Service Worker: Clic sur notification')
+  event.notification.close()
+  
+  event.waitUntil(
+    clients.openWindow('/')
+  )
+}) 

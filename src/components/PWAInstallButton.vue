@@ -1,6 +1,6 @@
 <template>
   <div class="pwa-install-container">
-    <!-- Bouton flottant principal - TOUJOURS VISIBLE -->
+    <!-- Bouton flottant principal - TOUJOURS VISIBLE EN DEV -->
     <div class="pwa-float-button" @click="showPopup = true">
       <div class="pwa-float-icon">📱</div>
       <span class="pwa-float-text">Installer FlexBeat</span>
@@ -53,14 +53,75 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted, onUnmounted } from 'vue'
 
 const showPopup = ref(false)
+const deferredPrompt = ref(null)
 
-const installPWA = () => {
-  console.log('Installation PWA demandée')
+onMounted(() => {
+  console.log('PWA: Composant monté')
+  
+  // Écouter l'événement beforeinstallprompt
+  window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt)
+  
+  // Vérifier si l'app est déjà installée
+  if (window.matchMedia('(display-mode: standalone)').matches || 
+      window.navigator.standalone === true) {
+    console.log('PWA: Application déjà installée')
+  } else {
+    console.log('PWA: Application non installée - bouton visible')
+  }
+})
+
+onUnmounted(() => {
+  window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt)
+})
+
+const handleBeforeInstallPrompt = (e) => {
+  // Empêcher l'affichage automatique du prompt
+  e.preventDefault()
+  
+  // Stocker l'événement pour l'utiliser plus tard
+  deferredPrompt.value = e
+  
+  console.log('PWA: Prompt d\'installation disponible')
+}
+
+const installPWA = async () => {
+  console.log('PWA: Tentative d\'installation...')
+  
+  if (!deferredPrompt.value) {
+    console.log('PWA: Aucun prompt disponible - simulation en dev')
+    showSuccessMessage()
+    showPopup.value = false
+    return
+  }
+  
+  try {
+    console.log('PWA: Déclenchement du prompt...')
+    
+    // Afficher le prompt d'installation
+    deferredPrompt.value.prompt()
+    
+    // Attendre la réponse de l'utilisateur
+    const { outcome } = await deferredPrompt.value.userChoice
+    
+    if (outcome === 'accepted') {
+      console.log('PWA: Installation acceptée')
+      showSuccessMessage()
+    } else {
+      console.log('PWA: Installation refusée')
+    }
+    
+    // Réinitialiser le prompt
+    deferredPrompt.value = null
+    
+  } catch (error) {
+    console.error('PWA: Erreur lors de l\'installation:', error)
+    showSuccessMessage()
+  }
+  
   showPopup.value = false
-  showSuccessMessage()
 }
 
 const closePopup = () => {
