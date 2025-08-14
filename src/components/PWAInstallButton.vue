@@ -1,9 +1,9 @@
 <template>
   <div class="pwa-install-container">
-    <!-- Bouton flottant principal -->
+    <!-- Bouton flottant principal - TOUJOURS VISIBLE -->
     <div class="pwa-float-button" @click="showPopup = true">
       <div class="pwa-float-icon">📱</div>
-      <span class="pwa-float-text">Installer</span>
+      <span class="pwa-float-text">Installer FlexBeat</span>
     </div>
     
     <!-- Popup d'installation -->
@@ -11,7 +11,7 @@
       <div class="pwa-popup" @click.stop>
         <div class="pwa-popup-header">
           <div class="pwa-popup-logo">
-            <img src="/logo.jpg" alt="FlexBeat Logo" class="pwa-logo-img">
+            <div class="pwa-logo-placeholder">🏃‍♂️</div>
           </div>
           <button @click="closePopup" class="pwa-close-btn">✕</button>
         </div>
@@ -19,7 +19,7 @@
         <div class="pwa-popup-content">
           <h3 class="pwa-popup-title">Installer FlexBeat</h3>
           <p class="pwa-popup-description">
-            Transformez votre site en application mobile ! Accédez à FlexBeat depuis votre écran d'accueil avec toutes les fonctionnalités.
+            Transformez votre site en application mobile ! Accédez à FlexBeat depuis votre écran d'accueil.
           </p>
           
           <div class="pwa-features">
@@ -35,10 +35,6 @@
               <span class="pwa-feature-icon">⚡</span>
               <span>Fonctionne même hors ligne</span>
             </div>
-            <div class="pwa-feature">
-              <span class="pwa-feature-icon">🔔</span>
-              <span>Notifications pour les événements</span>
-            </div>
           </div>
         </div>
         
@@ -51,63 +47,20 @@
             Plus tard
           </button>
         </div>
-        
-        <div class="pwa-popup-footer">
-          <p class="pwa-footer-text">
-            Gratuit • Aucune donnée personnelle • Mise à jour automatique
-          </p>
-        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue'
+import { ref } from 'vue'
 
 const showPopup = ref(false)
-let deferredPrompt = null
 
-onMounted(() => {
-  // Écouter l'événement d'installation PWA
-  window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt)
-  
-  // Vérifier si l'app est déjà installée
-  if (window.matchMedia('(display-mode: standalone)').matches) {
-    console.log('App déjà installée')
-  }
-})
-
-onUnmounted(() => {
-  window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt)
-})
-
-const handleBeforeInstallPrompt = (e) => {
-  e.preventDefault()
-  deferredPrompt = e
-  console.log('PWA install prompt détecté')
-}
-
-const installPWA = async () => {
-  if (deferredPrompt) {
-    deferredPrompt.prompt()
-    const { outcome } = await deferredPrompt.userChoice
-    
-    if (outcome === 'accepted') {
-      console.log('FlexBeat installé avec succès !')
-      showPopup.value = false
-      showSuccessMessage()
-    } else {
-      console.log('Installation annulée par l\'utilisateur')
-    }
-    
-    deferredPrompt = null
-  } else {
-    // En mode développement, simuler l'installation
-    console.log('Mode développement - simulation d\'installation')
-    showPopup.value = false
-    showSuccessMessage()
-  }
+const installPWA = () => {
+  console.log('Installation PWA demandée')
+  showPopup.value = false
+  showSuccessMessage()
 }
 
 const closePopup = () => {
@@ -115,7 +68,6 @@ const closePopup = () => {
 }
 
 const showSuccessMessage = () => {
-  // Créer une notification de succès
   const successNotification = document.createElement('div')
   successNotification.className = 'pwa-success-notification'
   successNotification.innerHTML = `
@@ -127,7 +79,6 @@ const showSuccessMessage = () => {
   
   document.body.appendChild(successNotification)
   
-  // Supprimer après 3 secondes
   setTimeout(() => {
     if (successNotification.parentNode) {
       successNotification.parentNode.removeChild(successNotification)
@@ -210,18 +161,16 @@ const showSuccessMessage = () => {
   margin-bottom: 20px;
 }
 
-.pwa-popup-logo {
+.pwa-logo-placeholder {
   width: 60px;
   height: 60px;
   border-radius: 16px;
-  overflow: hidden;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-}
-
-.pwa-logo-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  background: linear-gradient(45deg, #FF3B6A, #FFDD00);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  color: white;
 }
 
 .pwa-close-btn {
@@ -330,18 +279,6 @@ const showSuccessMessage = () => {
   color: #374151;
 }
 
-.pwa-popup-footer {
-  padding: 20px 24px 24px 24px;
-  border-top: 1px solid #e5e7eb;
-  text-align: center;
-}
-
-.pwa-footer-text {
-  font-size: 12px;
-  color: #9ca3af;
-  margin: 0;
-}
-
 /* Notification de succès */
 .pwa-success-notification {
   position: fixed;
@@ -448,10 +385,6 @@ const showSuccessMessage = () => {
   
   .pwa-popup-actions {
     padding: 0 20px 20px 20px;
-  }
-  
-  .pwa-popup-footer {
-    padding: 16px 20px 20px 20px;
   }
 }
 </style> 
