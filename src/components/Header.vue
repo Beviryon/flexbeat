@@ -18,15 +18,44 @@
 
         <!-- Navigation Desktop -->
         <div class="hidden md:flex items-center space-x-8">
-          <router-link 
-            v-for="item in navigationItems" 
-            :key="item.path"
-            :to="item.path"
-            class="text-gray-700 hover:text-cacao font-medium transition-colors duration-200 relative group"
-          >
-            {{ item.name }}
-            <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-cacao group-hover:w-full transition-all duration-300"></span>
-          </router-link>
+          <template v-for="item in navigationItems" :key="item.name">
+            <!-- Menu simple -->
+            <router-link 
+              v-if="!item.children"
+              :to="item.path"
+              class="text-gray-700 hover:text-cacao font-medium transition-colors duration-200 relative group"
+            >
+              {{ item.name }}
+              <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-cacao group-hover:w-full transition-all duration-300"></span>
+            </router-link>
+            
+            <!-- Menu avec sous-menu -->
+            <div v-else class="relative group">
+              <button 
+                class="text-gray-700 hover:text-cacao font-medium transition-colors duration-200 relative flex items-center gap-1"
+              >
+                {{ item.name }}
+                <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                </svg>
+              </button>
+              
+              <!-- Dropdown -->
+              <div class="absolute left-0 mt-2 w-64 bg-white rounded-xl shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform group-hover:translate-y-0 translate-y-2">
+                <div class="py-2">
+                  <router-link
+                    v-for="child in item.children"
+                    :key="child.path"
+                    :to="child.path"
+                    class="block px-4 py-3 text-gray-700 hover:bg-gray-50 hover:text-cacao transition-colors duration-200"
+                  >
+                    <div class="font-medium">{{ child.name }}</div>
+                    <div class="text-sm text-gray-500">{{ child.description }}</div>
+                  </router-link>
+                </div>
+              </div>
+            </div>
+          </template>
         </div>
 
         <!-- CTA Button -->
@@ -53,20 +82,55 @@
         v-show="isMobileMenuOpen"
         class="md:hidden mt-4 pb-4 border-t border-gray-200"
       >
-        <div class="flex flex-col space-y-4 pt-4">
-          <router-link 
-            v-for="item in navigationItems" 
-            :key="item.path"
-            :to="item.path"
-            @click="closeMobileMenu"
-            class="text-gray-700 hover:text-cacao font-medium transition-colors duration-200 py-2"
-          >
-            {{ item.name }}
-          </router-link>
+        <div class="flex flex-col space-y-2 pt-4">
+          <template v-for="item in navigationItems" :key="item.name">
+            <!-- Menu simple mobile -->
+            <router-link 
+              v-if="!item.children"
+              :to="item.path"
+              @click="closeMobileMenu"
+              class="text-gray-700 hover:text-cacao font-medium transition-colors duration-200 py-2 px-2"
+            >
+              {{ item.name }}
+            </router-link>
+            
+            <!-- Menu avec sous-menu mobile -->
+            <div v-else>
+              <button 
+                @click="toggleMobileSubmenu(item.name)"
+                class="w-full text-left text-gray-700 hover:text-cacao font-medium transition-colors duration-200 py-2 px-2 flex items-center justify-between"
+              >
+                {{ item.name }}
+                <svg 
+                  class="w-4 h-4 transition-transform" 
+                  :class="{ 'rotate-180': mobileSubmenuOpen === item.name }"
+                  fill="currentColor" 
+                  viewBox="0 0 20 20"
+                >
+                  <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                </svg>
+              </button>
+              
+              <!-- Sous-menu mobile -->
+              <div v-show="mobileSubmenuOpen === item.name" class="pl-4 space-y-1">
+                <router-link
+                  v-for="child in item.children"
+                  :key="child.path"
+                  :to="child.path"
+                  @click="closeMobileMenu"
+                  class="block py-2 px-2 text-gray-600 hover:text-cacao transition-colors"
+                >
+                  <div class="font-medium text-sm">{{ child.name }}</div>
+                  <div class="text-xs text-gray-500">{{ child.description }}</div>
+                </router-link>
+              </div>
+            </div>
+          </template>
+          
           <router-link 
             to="/join" 
             @click="closeMobileMenu"
-            class="btn-primary text-center"
+            class="btn-primary text-center mt-4"
           >
             Rejoindre
           </router-link>
@@ -81,12 +145,53 @@ import { ref, onMounted, onUnmounted } from 'vue'
 
 const isScrolled = ref(false)
 const isMobileMenuOpen = ref(false)
+const mobileSubmenuOpen = ref(null)
 
 const navigationItems = [
   { name: 'Accueil', path: '/' },
   { name: 'À propos', path: '/about' },
   { name: 'Activités', path: '/activities' },
   { name: 'Événements', path: '/events' },
+  { 
+    name: 'Exercices',
+    children: [
+      { 
+        name: 'Habitudes saines', 
+        path: '/healthy-habits',
+        description: 'Conseils adaptés à votre métier'
+      },
+      { 
+        name: 'Exercices au bureau', 
+        path: '/office-exercises',
+        description: 'Mouvements simples au travail'
+      },
+      { 
+        name: 'Exercices à la maison', 
+        path: '/home-exercises',
+        description: 'Programmes complets sans matériel'
+      }
+    ]
+  },
+  { 
+    name: 'Culture',
+    children: [
+      { 
+        name: 'Club de Lecture', 
+        path: '/reading-club',
+        description: 'Explorez la littérature ensemble'
+      },
+      { 
+        name: 'Slam & Poésie', 
+        path: '/slam-poetry',
+        description: 'Exprimez-vous avec les mots'
+      },
+      { 
+        name: 'Théâtre & Expression', 
+        path: '/theater',
+        description: 'Vivez l\'art dramatique'
+      }
+    ]
+  },
   { name: 'Galerie', path: '/gallery' },
   { name: 'Contact', path: '/contact' }
 ]
@@ -101,6 +206,11 @@ const toggleMobileMenu = () => {
 
 const closeMobileMenu = () => {
   isMobileMenuOpen.value = false
+  mobileSubmenuOpen.value = null
+}
+
+const toggleMobileSubmenu = (name) => {
+  mobileSubmenuOpen.value = mobileSubmenuOpen.value === name ? null : name
 }
 
 onMounted(() => {

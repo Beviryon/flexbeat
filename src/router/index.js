@@ -40,6 +40,36 @@ const router = createRouter({
       component: () => import('../views/ContactView.vue')
     },
     {
+      path: '/healthy-habits',
+      name: 'healthy-habits',
+      component: () => import('../views/HealthyHabitsView.vue')
+    },
+    {
+      path: '/office-exercises',
+      name: 'office-exercises',
+      component: () => import('../views/OfficeExercisesView.vue')
+    },
+    {
+      path: '/home-exercises',
+      name: 'home-exercises',
+      component: () => import('../views/HomeExercisesView.vue')
+    },
+    {
+      path: '/reading-club',
+      name: 'reading-club',
+      component: () => import('../views/ReadingClubView.vue')
+    },
+    {
+      path: '/slam-poetry',
+      name: 'slam-poetry',
+      component: () => import('../views/SlamPoetryView.vue')
+    },
+    {
+      path: '/theater',
+      name: 'theater',
+      component: () => import('../views/TheaterView.vue')
+    },
+    {
       path: '/legal',
       name: 'legal',
       component: () => import('../views/LegalView.vue')

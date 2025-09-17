@@ -89,6 +89,84 @@
           "type": "image/jpeg"
         }
       ]
+    },
+    {
+      "name": "Habitudes saines",
+      "short_name": "Habitudes",
+      "description": "Conseils adaptés à votre métier",
+      "url": "/healthy-habits",
+      "icons": [
+        {
+          "src": "/logo.jpg",
+          "sizes": "96x96",
+          "type": "image/jpeg"
+        }
+      ]
+    },
+    {
+      "name": "Exercices bureau",
+      "short_name": "Bureau",
+      "description": "Mouvements simples au travail",
+      "url": "/office-exercises",
+      "icons": [
+        {
+          "src": "/logo.jpg",
+          "sizes": "96x96",
+          "type": "image/jpeg"
+        }
+      ]
+    },
+    {
+      "name": "Exercices maison",
+      "short_name": "Maison",
+      "description": "Programmes complets à domicile",
+      "url": "/home-exercises",
+      "icons": [
+        {
+          "src": "/logo.jpg",
+          "sizes": "96x96",
+          "type": "image/jpeg"
+        }
+      ]
+    },
+    {
+      "name": "Club de Lecture",
+      "short_name": "Lecture",
+      "description": "Explorez la littérature ensemble",
+      "url": "/reading-club",
+      "icons": [
+        {
+          "src": "/logo.jpg",
+          "sizes": "96x96",
+          "type": "image/jpeg"
+        }
+      ]
+    },
+    {
+      "name": "Slam & Poésie",
+      "short_name": "Slam",
+      "description": "Exprimez-vous avec les mots",
+      "url": "/slam-poetry",
+      "icons": [
+        {
+          "src": "/logo.jpg",
+          "sizes": "96x96",
+          "type": "image/jpeg"
+        }
+      ]
+    },
+    {
+      "name": "Théâtre",
+      "short_name": "Théâtre",
+      "description": "Vivez l'art dramatique",
+      "url": "/theater",
+      "icons": [
+        {
+          "src": "/logo.jpg",
+          "sizes": "96x96",
+          "type": "image/jpeg"
+        }
+      ]
     }
   ]
 } 
