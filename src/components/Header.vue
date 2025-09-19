@@ -183,7 +183,7 @@ const navigationItems = [
       { 
         name: 'Slam & Poésie', 
         path: '/slam-poetry',
-        description: 'Exprimez-vous avec les mots'
+        description: 'Exprimez-vous avec les mots.'
       },
       { 
         name: 'Théâtre & Expression', 
