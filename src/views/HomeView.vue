@@ -643,10 +643,65 @@
       </div>
     </section>
 
+    <!-- Section Partenaires (courte) -->
+    <section class="py-20 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-6xl mx-auto">
+          <div class="text-center mb-12">
+            <div class="inline-flex items-center space-x-2 bg-indigo/10 text-indigo px-4 py-2 rounded-full mb-4">
+              <span class="w-2 h-2 bg-indigo rounded-full"></span>
+              <span class="text-sm font-semibold">Partenaires</span>
+            </div>
+            <h2 class="section-title">Nos Partenaires de Confiance</h2>
+            <p class="section-subtitle max-w-2xl mx-auto">
+              FlexBeat collabore avec des partenaires qui partagent nos valeurs 
+              et nous aident à développer notre communauté
+            </p>
+          </div>
+          
+          <!-- Aperçu des partenaires -->
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
+            <div 
+              v-for="partner in partnersPreview" 
+              :key="partner.id"
+              class="group bg-gradient-to-br from-gray-50 to-white rounded-xl p-6 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-2 flex flex-col items-center justify-center"
+            >
+              <div class="w-24 h-24 bg-gradient-to-br from-cacao/10 to-indigo/10 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300 mb-3">
+                <span class="text-2xl font-bold text-cacao">{{ partner.name.charAt(0) }}</span>
+              </div>
+              <span class="text-sm font-semibold text-cacao text-center">{{ partner.name }}</span>
+            </div>
+          </div>
+          
+          <!-- CTA vers la page complète -->
+          <div class="text-center">
+            <router-link 
+              to="/partners"
+              class="inline-flex items-center gap-2 text-indigo hover:text-cacao font-semibold transition-colors duration-300 group"
+            >
+              <span>Découvrir tous nos partenaires</span>
+              <svg class="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+              </svg>
+            </router-link>
+          </div>
+        </div>
+      </div>
+    </section>
+
   </div>
 </template>
 
 <script setup>
+import { ref } from 'vue'
+
+// Aperçu des partenaires pour la page d'accueil
+const partnersPreview = ref([
+  { id: 1, name: 'Trevixia' },
+  { id: 2, name: 'BeCandidature' },
+  { id: 3, name: 'RYONVA' },
+  { id: 4, name: 'AmBeLyfe' }
+])
 </script>
 
 <style scoped>

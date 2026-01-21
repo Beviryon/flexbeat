@@ -192,7 +192,21 @@ const navigationItems = [
       }
     ]
   },
-  { name: 'Galerie', path: '/gallery' },
+  { 
+    name: 'Plus',
+    children: [
+      { 
+        name: 'Galerie', 
+        path: '/gallery',
+        description: 'Photos & moments forts'
+      },
+      { 
+        name: 'Partenaires', 
+        path: '/partners',
+        description: 'Nos collaborations'
+      }
+    ]
+  },
   { name: 'Contact', path: '/contact' }
 ]
 
