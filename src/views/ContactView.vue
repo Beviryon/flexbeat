@@ -142,20 +142,35 @@
       <div class="container mx-auto px-4">
         <div class="max-w-3xl mx-auto">
           <div class="text-center mb-16">
-            <h2 class="section-title">Envoyez-nous un message</h2>
+            <h2 class="section-title">Préparer votre message WhatsApp</h2>
             <p class="section-subtitle">
-              Remplissez ce formulaire et nous vous répondrons dans les plus brefs délais
+              Remplissez les infos ci-dessous, puis envoyez le message sur WhatsApp
             </p>
+          </div>
+          
+          <!-- Messages de feedback -->
+          <div v-if="formMessage" :class="[
+            'mb-6 p-4 rounded-lg',
+            formMessage.type === 'success'
+              ? 'bg-green-50 text-green-800 border border-green-200'
+              : 'bg-red-50 text-red-800 border border-red-200'
+          ]">
+            <div class="flex items-center gap-2">
+              <svg v-if="formMessage.type === 'success'" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+              </svg>
+              <svg v-else class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd" />
+              </svg>
+              <p class="font-medium">{{ formMessage.text }}</p>
+            </div>
           </div>
           
           <form 
             ref="contactForm"
-            action="https://formspree.io/f/xpzgwqjz"
-            method="POST"
             class="space-y-6"
             @submit="handleFormSubmit"
           >
-            <input type="hidden" name="type" value="contact">
             
             <!-- Informations personnelles -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -254,8 +269,8 @@
               :disabled="isSubmitting"
               class="w-full btn-primary text-lg py-4 disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              <span v-if="isSubmitting">Envoi en cours...</span>
-              <span v-else">Envoyer le message</span>
+              <span v-if="isSubmitting">Ouverture de WhatsApp...</span>
+              <span v-else">Envoyer votre message </span>
             </button>
           </form>
         </div>
@@ -383,29 +398,61 @@ import { ref } from 'vue'
 
 const isSubmitting = ref(false)
 const contactForm = ref(null)
+const formMessage = ref(null)
 
-const handleFormSubmit = async (event) => {
+const handleFormSubmit = (event) => {
   event.preventDefault()
   isSubmitting.value = true
+  formMessage.value = null
   
   try {
     const formData = new FormData(event.target)
-    const response = await fetch('https://formspree.io/f/xpzgwqjz', {
-      method: 'POST',
-      body: formData,
-      headers: {
-        'Accept': 'application/json'
-      }
-    })
     
-    if (response.ok) {
-      alert('Message envoyé avec succès ! Nous vous répondrons dans les plus brefs délais.')
-      event.target.reset()
-    } else {
-      throw new Error('Erreur lors de l\'envoi')
+    const firstName = (formData.get('firstName') || '').toString().trim()
+    const lastName = (formData.get('lastName') || '').toString().trim()
+    const email = (formData.get('email') || '').toString().trim()
+    const phone = (formData.get('phone') || '').toString().trim()
+    const subject = (formData.get('subject') || '').toString().trim()
+    const message = (formData.get('message') || '').toString().trim()
+
+    // Mapper les valeurs de sujet pour un affichage plus lisible
+    const subjectMap = {
+      'information': 'Demande d\'information',
+      'adhesion': 'Adhésion à l\'association',
+      'evenement': 'Organisation d\'événement',
+      'partenariat': 'Partenariat',
+      'autre': 'Autre'
     }
+    const subjectLabel = subjectMap[subject] || subject
+
+    const text =
+      `Bonjour, je souhaite contacter FlexBeat.\n\n` +
+      `Nom: ${firstName} ${lastName}\n` +
+      (email ? `Email: ${email}\n` : '') +
+      (phone ? `Téléphone: ${phone}\n` : '') +
+      `Sujet: ${subjectLabel}\n\n` +
+      `Message:\n${message}`
+
+    const url = `https://wa.me/33763217791?text=${encodeURIComponent(text)}`
+    window.open(url, '_blank')
+
+    formMessage.value = {
+      type: 'success',
+      text: 'WhatsApp a été ouvert avec votre message. Il ne reste plus qu\'à cliquer sur "Envoyer".'
+    }
+    
+    // Scroll to message
+    setTimeout(() => {
+      const messageEl = document.querySelector('[v-if="formMessage"]')
+      if (messageEl) {
+        messageEl.scrollIntoView({ behavior: 'smooth', block: 'center' })
+      }
+    }, 100)
   } catch (error) {
-    alert('Erreur lors de l\'envoi du formulaire. Veuillez réessayer.')
+    formMessage.value = {
+      type: 'error',
+      text: 'Impossible de préparer le message WhatsApp. Veuillez réessayer.'
+    }
     console.error('Erreur:', error)
   } finally {
     isSubmitting.value = false
