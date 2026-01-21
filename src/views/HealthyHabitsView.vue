@@ -146,13 +146,7 @@
           <div class="mt-16 bg-gradient-to-r from-gray-50 to-gray-100 rounded-2xl p-8">
             <h3 class="text-2xl font-bold text-center mb-8">Vidéo : 10 Habitudes Saines pour Tous les Travailleurs</h3>
             <div class="aspect-w-16 aspect-h-9 max-w-4xl mx-auto">
-              <iframe 
-                src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
-                frameborder="0" 
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                allowfullscreen
-                class="w-full h-full rounded-xl"
-              ></iframe>
+              <RandomVideo class="rounded-xl" />
             </div>
           </div>
         </div>
@@ -177,13 +171,7 @@
               <h3 class="font-bold text-lg mb-2 text-indigo">{{ conseil.titre }}</h3>
               <p class="text-gray-600 mb-4">{{ conseil.description }}</p>
               <div v-if="conseil.video" class="aspect-w-16 aspect-h-9 mb-4">
-                <iframe 
-                  :src="conseil.video" 
-                  frameborder="0" 
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                  allowfullscreen
-                  class="w-full h-full rounded-lg"
-                ></iframe>
+                <RandomVideo class="rounded-lg" />
               </div>
             </div>
           </div>
@@ -195,6 +183,7 @@
 
 <script setup>
 import { ref } from 'vue'
+import RandomVideo from '@/components/RandomVideo.vue'
 
 const modalOpen = ref(false)
 const selectedProfession = ref('')
@@ -206,22 +195,22 @@ const modalContent = {
       {
         titre: 'Posture de conduite optimale',
         description: 'Ajustez votre siège pour que vos genoux soient légèrement fléchis, le dos bien appuyé contre le dossier. Vos coudes doivent être légèrement pliés lorsque vous tenez le volant. Utilisez un coussin lombaire si nécessaire.',
-        video: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
+        video: true
       },
       {
         titre: 'Exercices aux feux rouges',
         description: 'Profitez des arrêts pour faire des rotations du cou, des haussements d\'épaules et des étirements des poignets. Ces micro-exercices préviennent les tensions musculaires.',
-        video: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
+        video: true
       },
       {
         titre: 'Hydratation et alimentation',
         description: 'Gardez une bouteille d\'eau réutilisable à portée de main. Privilégiez les collations saines comme les fruits secs, les noix et évitez les fast-foods qui causent de la somnolence.',
-        video: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
+        video: true
       },
       {
         titre: 'Gestion de la fatigue',
         description: 'Faites une pause de 15 minutes toutes les 2 heures. Sortez du véhicule, marchez et étirez-vous. La micro-sieste de 20 minutes peut considérablement améliorer votre vigilance.',
-        video: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
+        video: true
       }
     ]
   },
@@ -231,22 +220,22 @@ const modalContent = {
       {
         titre: 'Ergonomie du poste de travail',
         description: 'Placez votre écran à hauteur des yeux et à une distance d\'un bras. Vos pieds doivent être à plat sur le sol, les cuisses parallèles au sol. Utilisez un support pour ordinateur portable si nécessaire.',
-        video: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
+        video: true
       },
       {
         titre: 'Pauses actives',
         description: 'Toutes les heures, levez-vous et marchez pendant 5 minutes. Faites des étirements du dos, des épaules et du cou. Utilisez les escaliers plutôt que l\'ascenseur.',
-        video: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
+        video: true
       },
       {
         titre: 'Protection des yeux',
         description: 'Appliquez la règle 20-20-20 : toutes les 20 minutes, regardez un objet à 20 pieds (6 mètres) pendant 20 secondes. Ajustez la luminosité de votre écran et utilisez un filtre anti-lumière bleue.',
-        video: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
+        video: true
       },
       {
         titre: 'Gestion du stress',
         description: 'Entre les appels clients, pratiquez la respiration profonde : inspirez pendant 4 secondes, retenez pendant 4 secondes, expirez pendant 6 secondes. Créez un espace de travail agréable avec des plantes.',
-        video: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
+        video: true
       }
     ]
   },
@@ -256,17 +245,17 @@ const modalContent = {
       {
         titre: 'Station de travail debout',
         description: 'Alternez entre position assise et debout toutes les 30 minutes. Si possible, utilisez un bureau ajustable ou un convertisseur de bureau debout. Gardez une bonne posture même debout.',
-        video: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
+        video: true
       },
       {
         titre: 'Exercices discrets au bureau',
         description: 'Faites des extensions de jambes sous le bureau, des rotations de chevilles, et des contractions abdominales. Ces exercices maintiennent la circulation sanguine active.',
-        video: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
+        video: true
       },
       {
         titre: 'Organisation du temps',
         description: 'Utilisez la technique Pomodoro : 25 minutes de travail concentré suivies de 5 minutes de pause active. Planifiez vos tâches les plus exigeantes aux moments où vous êtes le plus énergique.',
-        video: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
+        video: true
       }
     ]
   },
@@ -276,17 +265,17 @@ const modalContent = {
       {
         titre: 'Prévention des douleurs aux jambes',
         description: 'Portez des chaussures confortables avec un bon support. Alternez entre station debout et assise pendant les cours. Utilisez un tapis anti-fatigue si vous restez debout longtemps.',
-        video: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
+        video: true
       },
       {
         titre: 'Protection de la voix',
         description: 'Hydratez-vous régulièrement avec de l\'eau tiède. Évitez de crier, utilisez un microphone si nécessaire. Faites des exercices de relaxation vocale entre les cours.',
-        video: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
+        video: true
       },
       {
         titre: 'Gestion du stress en classe',
         description: 'Pratiquez la respiration consciente avant chaque cours. Créez des routines qui vous permettent de prendre des micro-pauses. Déléguez certaines tâches aux élèves pour réduire votre charge.',
-        video: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
+        video: true
       }
     ]
   },
@@ -296,17 +285,17 @@ const modalContent = {
       {
         titre: 'Prévention lors des gardes',
         description: 'Portez des chaussures orthopédiques et des bas de compression. Faites des étirements des mollets et du dos toutes les 2 heures. Utilisez les techniques de transfert appropriées pour éviter les blessures.',
-        video: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
+        video: true
       },
       {
         titre: 'Nutrition pendant les gardes',
         description: 'Préparez des repas équilibrés à l\'avance. Gardez des collations saines (fruits, noix, barres protéinées). Évitez la caféine excessive, préférez l\'eau et les tisanes.',
-        video: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
+        video: true
       },
       {
         titre: 'Récupération post-garde',
         description: 'Respectez un rituel de sommeil même après une garde de nuit. Faites 20 minutes d\'exercice léger avant de dormir. Utilisez des techniques de relaxation pour faciliter l\'endormissement.',
-        video: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
+        video: true
       }
     ]
   },
@@ -316,22 +305,22 @@ const modalContent = {
       {
         titre: 'Échauffement avant le travail',
         description: 'Commencez par 5-10 minutes d\'échauffement : rotations articulaires, étirements dynamiques, marche rapide. Cela prépare vos muscles et réduit le risque de blessures.',
-        video: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
+        video: true
       },
       {
         titre: 'Techniques de levage sécuritaire',
         description: 'Pliez les genoux, gardez le dos droit, rapprochez la charge de votre corps. Pivotez avec vos pieds, pas votre dos. Demandez de l\'aide pour les charges lourdes.',
-        video: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
+        video: true
       },
       {
         titre: 'Récupération musculaire',
         description: 'Étirez-vous après le travail, en ciblant les muscles sollicités. Utilisez des rouleaux de massage pour détendre les tensions. Prenez des bains chauds avec du sel d\'Epsom.',
-        video: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
+        video: true
       },
       {
         titre: 'Protection et équipement',
         description: 'Portez toujours l\'équipement de protection approprié. Utilisez des genouillères pour les travaux au sol, des ceintures lombaires pour les charges lourdes. Remplacez régulièrement vos équipements usés.',
-        video: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
+        video: true
       }
     ]
   }

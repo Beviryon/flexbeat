@@ -228,13 +228,7 @@
           <div class="mt-16 bg-gradient-to-r from-gray-50 to-gray-100 rounded-2xl p-8">
             <h3 class="text-2xl font-bold text-center mb-8">Comment fonctionne notre club ?</h3>
             <div class="aspect-w-16 aspect-h-9 max-w-4xl mx-auto">
-              <iframe 
-                src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
-                frameborder="0" 
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                allowfullscreen
-                class="w-full h-full rounded-xl"
-              ></iframe>
+              <RandomVideo class="rounded-xl" />
             </div>
           </div>
         </div>
@@ -334,7 +328,7 @@
                     <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                       <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd" />
                     </svg>
-                    Écouter sur YouTube
+                    Écouter la version audio
                   </button>
                 </div>
               </div>
@@ -348,6 +342,8 @@
 
 <script setup>
 import { ref, computed } from 'vue'
+import RandomVideo from '@/components/RandomVideo.vue'
+import { pickRandomFlexbeatVideoUrl } from '@/utils/randomVideo'
 
 const modalOpen = ref(false)
 const selectedBook = ref(null)
@@ -366,7 +362,7 @@ const allBooks = [
     year: 1942,
     meetingDate: "Dimanche 24 novembre",
     location: "Bibliothèque municipale",
-    audioBookUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    audioBookUrl: true,
     discussionPoints: [
       "Le concept de l'absurde chez Camus",
       "L'indifférence de Meursault face aux conventions sociales",
@@ -387,7 +383,7 @@ const allBooks = [
     year: 1979,
     meetingDate: "Dimanche 1er décembre",
     location: "Café littéraire du centre",
-    audioBookUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    audioBookUrl: true,
     discussionPoints: [
       "La condition féminine en Afrique",
       "La tradition vs la modernité",
@@ -408,7 +404,7 @@ const allBooks = [
     year: 1968,
     meetingDate: "Dimanche 8 décembre",
     location: "Espace culturel FlexBeat",
-    audioBookUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    audioBookUrl: true,
     discussionPoints: [
       "Le style linguistique unique de Kourouma",
       "Les désillusions des indépendances",
@@ -429,7 +425,7 @@ const allBooks = [
     year: 1954,
     meetingDate: "Lu en octobre",
     location: "Session passée",
-    audioBookUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    audioBookUrl: true,
     discussionPoints: [
       "La critique du système colonial",
       "L'urbanisation et ses défis en Afrique",
@@ -450,7 +446,7 @@ const allBooks = [
     year: 1943,
     meetingDate: "Lu en septembre",
     location: "Session passée",
-    audioBookUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    audioBookUrl: true,
     discussionPoints: [
       "La vision du monde des adultes vs celle des enfants",
       "Les symboles dans le récit (rose, renard, serpent)",
@@ -471,7 +467,7 @@ const allBooks = [
     year: 1939,
     meetingDate: "Lu en août",
     location: "Session passée",
-    audioBookUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    audioBookUrl: true,
     discussionPoints: [
       "Le concept de négritude",
       "La poésie comme arme de libération",
@@ -515,7 +511,7 @@ const showLessBooks = () => {
 
 const playAudioBook = () => {
   if (selectedBook.value?.audioBookUrl) {
-    window.open(selectedBook.value.audioBookUrl, '_blank')
+    window.open(pickRandomFlexbeatVideoUrl(), '_blank')
   }
 }
 </script>

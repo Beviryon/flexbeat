@@ -372,13 +372,7 @@
             </svg>
           </button>
           <div class="aspect-w-16 aspect-h-9">
-            <iframe 
-              :src="currentVideoUrl" 
-              frameborder="0" 
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-              allowfullscreen
-              class="w-full h-full rounded-xl"
-            ></iframe>
+            <RandomVideo :key="videoModalKey" class="rounded-xl" />
           </div>
         </div>
       </div>
@@ -388,11 +382,12 @@
 
 <script setup>
 import { ref } from 'vue'
+import RandomVideo from '@/components/RandomVideo.vue'
 
 const modalOpen = ref(false)
 const videoModalOpen = ref(false)
 const selectedWorkshop = ref(null)
-const currentVideoUrl = ref('')
+const videoModalKey = ref(0)
 
 const workshops = [
   {
@@ -465,19 +460,13 @@ const closeModal = () => {
 }
 
 const showVideo = (type) => {
-  // Ici vous mettriez les vraies URLs de vos vidéos
-  const videos = {
-    'open-mic': 'https://www.youtube.com/embed/dQw4w9WgXcQ',
-    'battle': 'https://www.youtube.com/embed/dQw4w9WgXcQ',
-    'intro': 'https://www.youtube.com/embed/dQw4w9WgXcQ'
-  }
-  currentVideoUrl.value = videos[type] || videos['intro']
   videoModalOpen.value = true
+  // Force a new random choice each time the modal opens
+  videoModalKey.value += 1
 }
 
 const closeVideoModal = () => {
   videoModalOpen.value = false
-  currentVideoUrl.value = ''
 }
 </script>
 

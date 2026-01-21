@@ -213,13 +213,7 @@
             <div class="mb-8">
               <h3 class="font-bold text-lg mb-4">Vidéo de démonstration</h3>
               <div class="aspect-w-16 aspect-h-9">
-                <iframe 
-                  :src="selectedWorkout?.introVideo" 
-                  frameborder="0" 
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                  allowfullscreen
-                  class="w-full h-full rounded-xl"
-                ></iframe>
+                <RandomVideo class="rounded-xl" />
               </div>
             </div>
             
@@ -287,6 +281,8 @@
 
 <script setup>
 import { ref, computed } from 'vue'
+import RandomVideo from '@/components/RandomVideo.vue'
+import { pickRandomFlexbeatVideoUrl } from '@/utils/randomVideo'
 
 const selectedLevel = ref('tous')
 const selectedDuration = ref('tous')
@@ -305,7 +301,7 @@ const workouts = [
     gradient: 'from-raspberry to-sunny',
     description: 'Programme cardio parfait pour commencer en douceur et améliorer votre endurance.',
     equipment: ['Aucun matériel'],
-    introVideo: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+    introVideo: true,
     exercises: [
       {
         name: 'Marche sur place',
@@ -313,7 +309,7 @@ const workouts = [
         reps: 'Continu',
         difficulty: 'Facile',
         description: 'Échauffement en douceur pour préparer le corps',
-        video: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
+        video: true
       },
       {
         name: 'Jumping jacks',
@@ -321,7 +317,7 @@ const workouts = [
         reps: '3 séries',
         difficulty: 'Facile',
         description: 'Exercice cardio complet pour tout le corps',
-        video: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
+        video: true
       },
       {
         name: 'Montées de genoux',
@@ -329,7 +325,7 @@ const workouts = [
         reps: '3 séries',
         difficulty: 'Facile',
         description: 'Travail cardio ciblé sur les jambes',
-        video: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
+        video: true
       },
       {
         name: 'Pas chassés',
@@ -337,7 +333,7 @@ const workouts = [
         reps: '3 séries',
         difficulty: 'Facile',
         description: 'Exercice latéral pour l\'agilité',
-        video: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
+        video: true
       }
     ]
   },
@@ -351,7 +347,7 @@ const workouts = [
     gradient: 'from-cacao to-raspberry',
     description: 'Entraînement haute intensité pour maximiser la combustion des graisses.',
     equipment: ['Aucun matériel', 'Tapis'],
-    introVideo: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+    introVideo: true,
     exercises: [
       {
         name: 'Burpees',
@@ -359,7 +355,7 @@ const workouts = [
         reps: '4 séries',
         difficulty: 'Difficile',
         description: 'Exercice complet pour tout le corps',
-        video: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
+        video: true
       },
       {
         name: 'Mountain climbers',
@@ -367,7 +363,7 @@ const workouts = [
         reps: '4 séries',
         difficulty: 'Moyen',
         description: 'Cardio intense ciblant les abdominaux',
-        video: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
+        video: true
       },
       {
         name: 'Squats sautés',
@@ -375,7 +371,7 @@ const workouts = [
         reps: '4 séries',
         difficulty: 'Moyen',
         description: 'Renforcement des jambes avec cardio',
-        video: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
+        video: true
       },
       {
         name: 'Planche dynamique',
@@ -383,7 +379,7 @@ const workouts = [
         reps: '4 séries',
         difficulty: 'Difficile',
         description: 'Core et stabilité',
-        video: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
+        video: true
       }
     ]
   },
@@ -397,7 +393,7 @@ const workouts = [
     gradient: 'from-indigo to-cacao',
     description: 'Développez votre force musculaire uniquement avec le poids du corps.',
     equipment: ['Aucun matériel'],
-    introVideo: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+    introVideo: true,
     exercises: [
       {
         name: 'Pompes variées',
@@ -405,7 +401,7 @@ const workouts = [
         reps: '3x15',
         difficulty: 'Moyen',
         description: 'Standard, large, diamant',
-        video: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
+        video: true
       },
       {
         name: 'Squats pistol',
@@ -413,7 +409,7 @@ const workouts = [
         reps: '3x10 par jambe',
         difficulty: 'Difficile',
         description: 'Squat sur une jambe',
-        video: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
+        video: true
       },
       {
         name: 'Dips triceps',
@@ -421,7 +417,7 @@ const workouts = [
         reps: '3x12',
         difficulty: 'Moyen',
         description: 'Sur une chaise ou un canapé',
-        video: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
+        video: true
       },
       {
         name: 'Superman',
@@ -429,7 +425,7 @@ const workouts = [
         reps: '3x15',
         difficulty: 'Facile',
         description: 'Renforcement du dos',
-        video: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
+        video: true
       },
       {
         name: 'Planche latérale',
@@ -437,7 +433,7 @@ const workouts = [
         reps: '3x30s par côté',
         difficulty: 'Moyen',
         description: 'Obliques et stabilité',
-        video: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
+        video: true
       }
     ]
   },
@@ -451,7 +447,7 @@ const workouts = [
     gradient: 'from-sunny to-indigo',
     description: 'Séance de yoga douce pour améliorer la flexibilité et réduire le stress.',
     equipment: ['Tapis', 'Coussin (optionnel)'],
-    introVideo: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+    introVideo: true,
     exercises: [
       {
         name: 'Salutation au soleil',
@@ -459,7 +455,7 @@ const workouts = [
         reps: '3 cycles',
         difficulty: 'Facile',
         description: 'Échauffement complet du corps',
-        video: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
+        video: true
       },
       {
         name: 'Posture du guerrier',
@@ -467,7 +463,7 @@ const workouts = [
         reps: '1 min par côté',
         difficulty: 'Facile',
         description: 'Force et équilibre',
-        video: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
+        video: true
       },
       {
         name: 'Chien tête en bas',
@@ -475,7 +471,7 @@ const workouts = [
         reps: 'Maintenir',
         difficulty: 'Facile',
         description: 'Étirement global',
-        video: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
+        video: true
       },
       {
         name: 'Posture de l\'enfant',
@@ -483,7 +479,7 @@ const workouts = [
         reps: 'Relaxation',
         difficulty: 'Facile',
         description: 'Détente et récupération',
-        video: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
+        video: true
       }
     ]
   },
@@ -497,7 +493,7 @@ const workouts = [
     gradient: 'from-raspberry to-indigo',
     description: 'Programme intensif pour les sportifs confirmés cherchant à repousser leurs limites.',
     equipment: ['Haltères', 'Élastiques', 'Tapis'],
-    introVideo: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+    introVideo: true,
     exercises: [
       {
         name: 'Box jumps',
@@ -505,7 +501,7 @@ const workouts = [
         reps: '5 séries',
         difficulty: 'Difficile',
         description: 'Sauts explosifs sur une surface surélevée',
-        video: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
+        video: true
       },
       {
         name: 'Thruster avec haltères',
@@ -513,7 +509,7 @@ const workouts = [
         reps: '5 séries',
         difficulty: 'Difficile',
         description: 'Squat + développé épaules',
-        video: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
+        video: true
       },
       {
         name: 'Pull-ups / Tractions',
@@ -521,7 +517,7 @@ const workouts = [
         reps: '5 séries',
         difficulty: 'Difficile',
         description: 'Si pas de barre, utiliser élastiques',
-        video: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
+        video: true
       },
       {
         name: 'Battle ropes',
@@ -529,7 +525,7 @@ const workouts = [
         reps: '5 séries',
         difficulty: 'Difficile',
         description: 'Ou mouvements rapides avec élastiques',
-        video: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
+        video: true
       }
     ]
   },
@@ -543,7 +539,7 @@ const workouts = [
     gradient: 'from-cacao to-sunny',
     description: 'Session d\'étirements pour la récupération musculaire et la détente.',
     equipment: ['Tapis'],
-    introVideo: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+    introVideo: true,
     exercises: [
       {
         name: 'Étirement des ischio-jambiers',
@@ -551,7 +547,7 @@ const workouts = [
         reps: '30s par jambe',
         difficulty: 'Facile',
         description: 'Allongé sur le dos, jambe tendue',
-        video: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
+        video: true
       },
       {
         name: 'Étirement du piriforme',
@@ -559,7 +555,7 @@ const workouts = [
         reps: '30s par côté',
         difficulty: 'Facile',
         description: 'Figure 4 allongé',
-        video: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
+        video: true
       },
       {
         name: 'Torsion vertébrale',
@@ -567,7 +563,7 @@ const workouts = [
         reps: '30s par côté',
         difficulty: 'Facile',
         description: 'Allongé, genoux sur le côté',
-        video: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
+        video: true
       },
       {
         name: 'Chat-vache',
@@ -575,7 +571,7 @@ const workouts = [
         reps: '10 répétitions',
         difficulty: 'Facile',
         description: 'Mobilité de la colonne',
-        video: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
+        video: true
       }
     ]
   }
@@ -601,9 +597,8 @@ const closeModal = () => {
   selectedWorkout.value = null
 }
 
-const playExerciseVideo = (videoUrl) => {
-  // Ici vous pourriez ouvrir la vidéo dans un nouveau modal ou une nouvelle fenêtre
-  window.open(videoUrl, '_blank')
+const playExerciseVideo = () => {
+  window.open(pickRandomFlexbeatVideoUrl(), '_blank')
 }
 </script>
 

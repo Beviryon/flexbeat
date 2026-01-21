@@ -459,13 +459,7 @@
             </svg>
           </button>
           <div class="aspect-w-16 aspect-h-9">
-            <iframe 
-              src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
-              frameborder="0" 
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-              allowfullscreen
-              class="w-full h-full rounded-xl"
-            ></iframe>
+            <RandomVideo :key="videoModalKey" class="rounded-xl" />
           </div>
         </div>
       </div>
@@ -475,10 +469,12 @@
 
 <script setup>
 import { ref } from 'vue'
+import RandomVideo from '@/components/RandomVideo.vue'
 
 const modalOpen = ref(false)
 const videoModalOpen = ref(false)
 const selectedShow = ref(null)
+const videoModalKey = ref(0)
 
 const upcomingShows = [
   {
@@ -534,6 +530,8 @@ const closeModal = () => {
 
 const showImprovVideo = () => {
   videoModalOpen.value = true
+  // Force a new random choice each time the modal opens
+  videoModalKey.value += 1
 }
 
 const closeVideoModal = () => {

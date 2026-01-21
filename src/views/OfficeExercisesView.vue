@@ -167,13 +167,7 @@
           <div class="p-6">
             <!-- Vidéo -->
             <div class="aspect-w-16 aspect-h-9 mb-8">
-              <iframe 
-                :src="selectedExercise?.videoUrl" 
-                frameborder="0" 
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                allowfullscreen
-                class="w-full h-full rounded-xl"
-              ></iframe>
+              <RandomVideo class="rounded-xl" />
             </div>
             
             <!-- Instructions détaillées -->
@@ -216,6 +210,7 @@
 
 <script setup>
 import { ref, computed } from 'vue'
+import RandomVideo from '@/components/RandomVideo.vue'
 
 const selectedCategory = ref('tous')
 const modalOpen = ref(false)
@@ -242,7 +237,7 @@ const exercises = [
     targetArea: 'Épaules',
     equipment: 'Aucun matériel',
     shortDescription: 'Relâchez les tensions accumulées dans vos épaules avec ces rotations simples.',
-    videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+    videoUrl: true,
     steps: [
       'Asseyez-vous droit sur votre chaise, pieds à plat sur le sol',
       'Inspirez et montez vos épaules vers vos oreilles',
@@ -268,7 +263,7 @@ const exercises = [
     targetArea: 'Quadriceps',
     equipment: 'Chaise',
     shortDescription: 'Activez la circulation sanguine dans vos jambes tout en restant assis.',
-    videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+    videoUrl: true,
     steps: [
       'Asseyez-vous au bord de votre chaise, dos droit',
       'Tendez une jambe parallèle au sol',
@@ -294,7 +289,7 @@ const exercises = [
     targetArea: 'Cou',
     equipment: 'Aucun matériel',
     shortDescription: 'Soulagez les tensions cervicales avec cet étirement doux et efficace.',
-    videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+    videoUrl: true,
     steps: [
       'Asseyez-vous droit, épaules détendues',
       'Inclinez doucement la tête vers l\'épaule droite',
@@ -320,7 +315,7 @@ const exercises = [
     targetArea: 'Pectoraux',
     equipment: 'Mur',
     shortDescription: 'Renforcez le haut du corps discrètement avec cet exercice contre le mur.',
-    videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+    videoUrl: true,
     steps: [
       'Placez-vous face à un mur, à une longueur de bras',
       'Posez vos mains à plat contre le mur, largeur des épaules',
@@ -346,7 +341,7 @@ const exercises = [
     targetArea: 'Poignets',
     equipment: 'Aucun matériel',
     shortDescription: 'Prévenez le syndrome du canal carpien avec ces étirements essentiels.',
-    videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+    videoUrl: true,
     steps: [
       'Tendez votre bras devant vous, paume vers le haut',
       'Avec l\'autre main, tirez doucement vos doigts vers l\'arrière',
@@ -372,7 +367,7 @@ const exercises = [
     targetArea: 'Yeux',
     equipment: 'Aucun matériel',
     shortDescription: 'Reposez vos yeux fatigués par les écrans avec cette technique simple.',
-    videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+    videoUrl: true,
     steps: [
       'Toutes les 20 minutes de travail sur écran',
       'Regardez un objet situé à 20 pieds (6 mètres)',
@@ -398,7 +393,7 @@ const exercises = [
     targetArea: 'Dos',
     equipment: 'Chaise',
     shortDescription: 'Mobilisez votre colonne vertébrale et soulagez les tensions dorsales.',
-    videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+    videoUrl: true,
     steps: [
       'Asseyez-vous droit, pieds à plat sur le sol',
       'Placez votre main droite sur le dossier de la chaise',
@@ -424,7 +419,7 @@ const exercises = [
     targetArea: 'Corps entier',
     equipment: 'Aucun matériel',
     shortDescription: 'Activez votre circulation et réveillez votre corps avec cette marche dynamique.',
-    videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+    videoUrl: true,
     steps: [
       'Levez-vous de votre chaise',
       'Marchez sur place en levant bien les genoux',
@@ -450,7 +445,7 @@ const exercises = [
     targetArea: 'Colonne vertébrale',
     equipment: 'Chaise',
     shortDescription: 'Inspiré du yoga, cet étirement soulage instantanément votre dos.',
-    videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+    videoUrl: true,
     steps: [
       'Asseyez-vous au bord de votre chaise',
       'Placez vos mains sur vos genoux',
