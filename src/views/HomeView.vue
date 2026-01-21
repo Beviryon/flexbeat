@@ -643,13 +643,10 @@
       </div>
     </section>
 
-    <!-- PWA Install Button -->
-    <PWAInstallButton />
   </div>
 </template>
 
 <script setup>
-import PWAInstallButton from '../components/PWAInstallButton.vue'
 </script>
 
 <style scoped>
