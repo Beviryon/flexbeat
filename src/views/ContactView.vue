@@ -75,8 +75,8 @@
                 <div>
                   <h3 class="font-semibold text-cacao mb-2">Téléphone</h3>
                   <p class="text-gray-600">
-                    +242 06 XXX XX XX<br>
-                    +242 05 XXX XX XX
+                    +242 06 562 17 74<br>
+                    +33 7 63 21 77 91
                   </p>
                 </div>
               </div>
